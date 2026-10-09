@@ -90,7 +90,7 @@ internal static partial class Program
     static UpResult Upstream(string sid,string path,string method,byte[] body,string contentType,int timeoutSec)
     {
         ServerCfg s; lock(Sync)s=Servers[sid].Clone(); if(string.IsNullOrWhiteSpace(s.Password)) throw new Exception("Salasana puuttuu palvelimelta "+sid.ToUpperInvariant()+".");
-        var req=(HttpWebRequest)WebRequest.Create("https://"+s.Host+path); req.Method=method; req.Timeout=timeoutSec*1000; req.ReadWriteTimeout=timeoutSec*1000; req.AllowAutoRedirect=false; req.UserAgent="AbittiHallinta/"+Version; req.Accept="application/json, text/plain, */*"; req.Headers[HttpRequestHeader.Authorization]="Basic "+Convert.ToBase64String(Utf8(Username+":"+s.Password));
+        var req=(HttpWebRequest)WebRequest.Create("https://"+s.Host+path); req.Method=method; req.Timeout=timeoutSec*1000; req.ReadWriteTimeout=timeoutSec*1000; req.AllowAutoRedirect=false; req.UserAgent="Abitti2Dashboard/"+Version; req.Accept="application/json, text/plain, */*"; req.Headers[HttpRequestHeader.Authorization]="Basic "+Convert.ToBase64String(Utf8(Username+":"+s.Password));
         if(contentType!=null) req.ContentType=contentType;
         if(body!=null){req.ContentLength=body.Length; using(var st=req.GetRequestStream()) st.Write(body,0,body.Length);}
         try { using(var r=(HttpWebResponse)req.GetResponse()) return ReadResponse(r); }
