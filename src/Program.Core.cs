@@ -136,7 +136,7 @@ internal static partial class Program
     {
         // [AUDIT][UI] Käyttöliittymä kootaan build-skriptissä ja upotetaan EXE:en resurssina.
         var asm = System.Reflection.Assembly.GetExecutingAssembly();
-        using (var s = asm.GetManifestResourceStream("Abitti2Dashboard.ui.html"))
+        using (var s = asm.GetManifestResourceStream("AbittiHallinta.ui.html"))
         using (var r = new StreamReader(s, Encoding.UTF8))
         {
             string h = r.ReadToEnd();
