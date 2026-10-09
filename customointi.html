@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Koulukohtaiset muutokset · Abitti2Dashboard</title>
+<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:auto;padding:28px;line-height:1.6;color:#172536;background:#f3f7f8}section{background:#fff;border:1px solid #d5e1e8;border-radius:12px;padding:18px;margin:14px 0}code{background:#edf2f5;padding:2px 5px;border-radius:5px}a{color:#0067a8}h1,h2{color:#102a43}</style></head>
+<body><p><a href="./">← Abitti2Dashboard</a></p><h1>Koulukohtaiset muutokset</h1>
+<section><h2>Milloin muutokset tehdään?</h2><p>Tee koulukohtaiset muutokset ennen EXE:n rakentamista. Avaa <code>src/Program.Core.cs</code>, tee muutokset ja käynnistä sen jälkeen <code>Rakenna_ja_kaynnista.cmd</code>. Jos muutat asetuksia myöhemmin, rakenna EXE uudelleen.</p></section>
+<section><h2>Mistä asetukset löytyvät?</h2><p>Etsi lähdekoodista merkintä <code>[KOULU][ASETUKSET]</code>. Samassa kohdassa ovat KTP-osoitteiden loppuosa, opiskelijalle näytettävä palvelinmuoto, palvelinvarauksen linkki, koulun oma tietolinkki, koeverkon nimi, opiskelijan Windows-kirjautumistiedot ja kokeen purkukoodin oletusarvo.</p><p><code>StudentServerSuffix</code> on vain osoitteen loppuosa, esimerkiksi <code>.1068</code>, koska ohjelma lisää alkuun automaattisesti <code>ktp1</code>, <code>ktp2</code> jne.</p></section>
+<section><h2>KTP-kohtaiset oletukset</h2><p>Etsi merkintä <code>[KOULU][OLETUSSALASANAT]</code>. Taulukon ensimmäinen arvo vastaa KTP1:tä, toinen KTP2:ta ja niin edelleen. KTP5–KTP10 voivat olla tyhjiä, jos niitä ei käytetä.</p><p>Yhteydet-välilehdellä myöhemmin tallennetut arvot ohittavat EXE:n oletuksen kyseisellä Windows-käyttäjällä.</p></section>
+<section><h2>Rakentaminen</h2><ol><li>Tallenna muutokset.</li><li>Käynnistä <code>Rakenna_ja_kaynnista.cmd</code>.</li><li>Kun käännös onnistuu, kansioon syntyy <code>Abitti2Dashboard.exe</code>.</li><li>Avaa Yhteydet-välilehti ja tarkista palvelinten tila.</li></ol></section>
+<section><h2>Mitä ei tarvitse muuttaa?</h2><p>Jos koulun osoiterakenne ja kirjautumisohjeiden tiedot sopivat valmiisiin oletuksiin, ohjelman voi rakentaa ilman muita lähdekoodimuutoksia. Käytön aikana muuttuvat KTP-kohtaiset kirjautumistiedot voi päivittää Yhteydet-välilehdeltä.</p></section>
+</body></html>
