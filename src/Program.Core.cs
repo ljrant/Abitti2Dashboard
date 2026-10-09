@@ -163,7 +163,7 @@ internal static partial class Program
         LogFile = Path.Combine(SettingsDir, "Abitti2Dashboard.log");
         // Siirrä vanhan AbittiHallinta-nimen asetukset automaattisesti, jos uusi asetustiedosto puuttuu.
         try {
-            string legacyDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AbittiHallinta");
+            string legacyDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Abitti2Dashboard");
             string legacySettings = Path.Combine(legacyDir, "settings.dat");
             if(!File.Exists(SettingsFile) && File.Exists(legacySettings)) File.Copy(legacySettings, SettingsFile, false);
         } catch {}
