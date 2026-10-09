@@ -2,7 +2,8 @@
 setlocal
 cd /d "%~dp0"
 
-echo Suljetaan mahdollinen vanha AbittiHallinta.exe...
+echo Suljetaan mahdollinen vanha Abitti2Dashboard.exe...
+taskkill /IM Abitti2Dashboard.exe /F >nul 2>nul
 taskkill /IM AbittiHallinta.exe /F >nul 2>nul
 
 set "CSC=%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
@@ -23,9 +24,9 @@ if not exist "ui.html" (
   exit /b 1
 )
 
-echo Rakennetaan AbittiHallinta.exe...
-"%CSC%" /nologo /target:winexe /out:AbittiHallinta.exe ^
- /resource:ui.html,AbittiHallinta.ui.html ^
+echo Rakennetaan Abitti2Dashboard.exe...
+"%CSC%" /nologo /target:winexe /out:Abitti2Dashboard.exe ^
+ /resource:ui.html,Abitti2Dashboard.ui.html ^
  /reference:System.dll ^
  /reference:System.Core.dll ^
  /reference:System.Web.Extensions.dll ^
@@ -44,6 +45,6 @@ if errorlevel 1 (
 )
 
 echo.
-echo Valmis. Kaynnistetaan AbittiHallinta.exe...
-start "" "%CD%\AbittiHallinta.exe"
+echo Valmis. Kaynnistetaan Abitti2Dashboard.exe...
+start "" "%CD%\Abitti2Dashboard.exe"
 endlocal
