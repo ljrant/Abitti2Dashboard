@@ -9,12 +9,13 @@ Ohjelma näyttää palvelinten yhteyden ja kirjautumisen tilan, kokeet, vastaust
 ## Ensikäyttö
 
 1. Lataa repository ZIP:nä GitHubista ja pura se paikalliseen kansioon.
-2. Avaa halutessasi lähdekoodi tarkistettavaksi. Keskeiset turvallisuus- ja muokkauskohdat on merkitty `[AUDIT]`- ja `[KOULU]`-kommenteilla.
-3. Tee tarvittavat koulukohtaiset muutokset ennen kääntämistä. Tarkat kohdat löytyvät alempaa.
-4. Käynnistä `Rakenna_ja_kaynnista.cmd`.
-5. Skripti rakentaa `AbittiHallinta.exe`:n ja käynnistää sen.
-6. Jatkossa EXE:n voi käynnistää suoraan.
-7. Tarkista **Yhteydet**-välilehdeltä, löytyvätkö KTP-palvelimet ja onnistuuko kirjautuminen.
+2. Tarkista halutessasi lähdekoodi. Keskeiset turvallisuus- ja muokkauskohdat on merkitty `[AUDIT]`- ja `[KOULU]`-kommenteilla.
+3. Avaa `src/Program.Core.cs` ja täytä oman koulun asetukset kohdasta **`[KOULU][ASETUKSET]`**. Julkiseen repositoryyn ei ole tallennettu oikeita salasanoja tai sisäisiä koululinkkejä.
+4. Jos haluat KTP-palvelimille valmiit oletussalasanat uuteen EXE:en, täytä ne kohdassa **`[KOULU][OLETUSSALASANAT]`**.
+5. Käynnistä `Rakenna_ja_kaynnista.cmd`.
+6. Skripti rakentaa `AbittiHallinta.exe`:n ja käynnistää sen.
+7. Jatkossa EXE:n voi käynnistää suoraan.
+8. Tarkista **Yhteydet**-välilehdeltä, löytyvätkö KTP-palvelimet ja onnistuuko kirjautuminen.
 
 KTP1–KTP4 yritetään yhdistää automaattisesti. KTP5–KTP10 otetaan käyttöön tarvittaessa **Yhdistä**-painikkeella.
 
@@ -36,13 +37,19 @@ Valvojan näkymän **ensimmäinen selainkirjautuminen tehdään käsin** käytt�
 
 ## Koulukohtaiset asetukset
 
-Avaa `AbittiHallinta.Core.cs` ja etsi:
+Kaikki tavalliset koulukohtaiset oletukset ovat tiedostossa:
+
+```
+src/Program.Core.cs
+```
+
+Etsi:
 
 ```
 [KOULU][ASETUKSET]
 ```
 
-Samasta kohdasta löytyvät:
+Siellä ovat:
 
 - `KtpDomainSuffix` – KTP-palvelinten osoitteen loppuosa
 - `StudentServerSuffix` – opiskelijalle näytettävä palvelinosoite
@@ -51,6 +58,7 @@ Samasta kohdasta löytyvät:
 - `StudentWifi` – koeverkon nimi
 - `StudentUsername` – opiskelijan Windows-käyttäjätunnus
 - `StudentPassword` – opiskelijan Windows-salasana
+- `DefaultDecryptPassword` – Tuo koe -ikkunaan esitäytettävä purkukoodi
 
 Oletussalasanat löytyvät samasta tiedostosta kohdasta:
 
@@ -58,9 +66,9 @@ Oletussalasanat löytyvät samasta tiedostosta kohdasta:
 [KOULU][OLETUSSALASANAT]
 ```
 
-GitHub-versiossa oikeat koulukohtaiset salasanat ja sisäiset linkit on **tarkoituksella poistettu**. Älä julkaise niitä public-repositoryyn. Jos haluat tietyt salasanat uuden EXE:n oletusarvoiksi, lisää ne omaan paikalliseen lähdekoodiisi ennen kääntämistä.
+**Älä julkaise oikeita valvoja- tai opiskelijasalasanoja public-repositoryyn.** Jos haluat ne omaan EXE-versioosi oletusarvoiksi, tee muutokset paikallisessa kopiossa ennen kääntämistä.
 
-Käytön aikana Yhteydet-välilehdellä tallennetut salasanat ohittavat lähdekoodin oletusarvot. Ne tallennetaan Windows-käyttäjäkohtaisesti DPAPI-suojattuina:
+Käytön aikana **Yhteydet**-välilehdellä tallennetut valvoja-salasanat ohittavat lähdekoodin oletusarvot. Ne tallennetaan Windows-käyttäjäkohtaisesti DPAPI-suojattuina:
 
 ```
 %LOCALAPPDATA%\AbittiHallinta\settings.dat
@@ -74,14 +82,14 @@ Loki:
 
 ## Tuo koe
 
-Työnkulku on tarkoituksella vaiheittainen:
+Työnkulku on tarkoituksella lähellä tavallista valvojan näkymää:
 
 1. Valitse palvelimelta **Tuo koe**.
-2. Tarkista vahvistuksesta oikea KTP-palvelin.
+2. Tarkista vahvistusikkunasta oikea KTP-palvelin ja varoitus.
 3. Valitse `.mex` tai `.zip`.
 4. Dashboard odottaa, että KTP ottaa tiedoston vastaan.
 5. Vasta tämän jälkeen näytetään purkukoodi-ikkuna.
-6. Tarkista/esitäytä purkukoodi ja valitse **Pura koe**.
+6. Tarkista esitäytetty purkukoodi ja valitse **Pura koe**.
 7. Väärän purkukoodin voi korjata ilman tiedoston uutta valintaa.
 
 ## Palvelinryhmät
@@ -90,7 +98,9 @@ Ohjelma vain näyttää KTP:n ilmoittaman palvelinryhmän. Ryhmät muodostetaan 
 
 ## Testi-HETU
 
-Generaattori tekee muodollisesti oikeanlaisen testihenkilötunnuksen koetilanteen testaamista varten esimerkiksi silloin, kun opiskelija ei muista omaa HETUaan. Toimintoa ei ole vielä kattavasti testattu varsinaisessa koetilanteessa, eikä generaattori tarkista, osuuko luotu tunnus oikean henkilön tunnukseen.
+Generaattori tekee muodollisesti oikeanlaisen testihenkilötunnuksen koetilanteen testaamista varten esimerkiksi silloin, kun opiskelija ei muista omaa HETUaan.
+
+Toimintoa ei ole vielä kattavasti testattu varsinaisessa koetilanteessa, eikä generaattori tarkista, osuuko luotu tunnus oikean henkilön tunnukseen.
 
 ## Auditointi
 
@@ -105,10 +115,20 @@ Lähdekoodissa on `[AUDIT]`-merkintöjä mm. seuraavista:
 
 Ohjelma käyttää paikallista porttia `8765`.
 
-## Julkisen GitHub-version rakenne
+## Repositoryn rakenne
 
-- `AbittiHallinta.Core.cs`, `AbittiHallinta.Network.cs`, ... – C#-lähdekoodi
-- `ui/` – käyttöliittymän lähdefragmentit
-- `Rakenna_ja_kaynnista.cmd` – kokoaa UI:n, kääntää EXE:n ja käynnistää sen
-- `docs/` – projektin GitHub Pages -sivu
+```
+src/Program.Core.cs        asetukset, käynnistys ja elinkaari
+src/Program.Http.cs        paikallinen API ja KTP:n HTTP-kutsut
+src/Program.WebSocket.cs   KTP-liveyhteydet ja datan suodatus
+src/Program.Storage.cs     salasanat, apufunktiot ja WebSocket-kehykset
+ui.html                    selaimessa näkyvä käyttöliittymä
+Rakenna_ja_kaynnista.cmd   Windows-build ja käynnistys
+docs/index.html            projektin GitHub Pages -etusivu
+```
 
+## Projektisivu
+
+Projektin lyhyet asennus- ja käyttöohjeet julkaistaan GitHub Pagesissa:
+
+**https://ljrant.github.io/Abitti2Dashboard/**
