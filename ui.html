@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Etis · Abitti2-hallinta</title>
+<title>AbittiHallinta · Abitti2</title>
 <style>
 :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--navy:#102a43;--blue:#0067a8;--cyan:#00a7b5;--violet:#5c4bb7;--ink:#152536;--muted:#66788a;--line:#d7e1e8;--paper:#fff;--bg:#eef5f6;--ok:#14845b;--bad:#b83245;--warn:#9a6500;color:var(--ink);background:var(--bg)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#e7f4f5 0,#f3f6f8 220px,#f3f6f8 100%)}a{color:var(--blue)}
@@ -23,7 +23,7 @@ button,select,input{font:inherit}button{border:1px solid #c9d5df;background:#fff
 </style>
 </head>
 <body>
-<div class="top"><div class="brand"><h1>Etis · Abitti2-hallinta</h1><div class="brandSub">Etelä-Tapiolan lukio · KTP1–KTP10</div></div><div class="row"><div id="modeBadge" class="modeBadge">Tunnistetaan käyttötila…</div><button id="shutdownApp" title="Sulkee AbittiHallinta.exe:n ja vapauttaa localhost-portin">Sulje ohjelma</button></div></div>
+<div class="top"><div class="brand"><h1>AbittiHallinta · Abitti2</h1><div class="brandSub">KTP1–KTP10</div></div><div class="row"><div id="modeBadge" class="modeBadge">Tunnistetaan käyttötila…</div><button id="shutdownApp" title="Sulkee AbittiHallinta.exe:n ja vapauttaa localhost-portin">Sulje ohjelma</button></div></div>
 <div class="tabs" id="tabs">
 <button class="tabbtn active" data-tab="monitor">Hallinta</button>
 <button class="tabbtn" data-tab="connections">Yhteydet</button>
@@ -49,7 +49,7 @@ button,select,input{font:inherit}button{border:1px solid #c9d5df;background:#fff
 <div class="studentTopControls"><div class="row"><label><b>Palvelin</b><br><select id="studentServer"></select></label></div><div class="row"><button id="studentLang">English</button><button id="studentRefresh">Päivitä</button><button id="studentPresentation">Avaa sivunäytölle ↗</button><button data-go="hetu">Testi-HETU</button></div></div>
 <div class="finalStep" style="margin:0 0 10px"><span data-fi="1. Kirjaudu ulos koneelta → valitse Toinen käyttäjä." data-en="1. Sign out of the computer → choose Other user.">1. Kirjaudu ulos koneelta → valitse Toinen käyttäjä.</span></div>
 <div class="steps4">
-<div class="stepCard"><div class="stepNo">2</div><div class="stepTitle" data-fi="Yhdistä koeverkkoon" data-en="Connect to exam Wi-Fi">Yhdistä koeverkkoon</div><div class="stepValue">Espoon_<wbr>koeverkko1</div><div class="stepHint" data-fi="Valitse verkko oikeasta alakulmasta ja rastita “Yhdistä automaattisesti”." data-en="Choose the network from the bottom right and check “Connect automatically”.">Valitse verkko oikeasta alakulmasta ja rastita “Yhdistä automaattisesti”.</div></div>
+<div class="stepCard"><div class="stepNo">2</div><div class="stepTitle" data-fi="Yhdistä koeverkkoon" data-en="Connect to exam Wi-Fi">Yhdistä koeverkkoon</div><div class="stepValue">__STUDENT_WIFI__</div><div class="stepHint" data-fi="Valitse verkko oikeasta alakulmasta ja rastita “Yhdistä automaattisesti”." data-en="Choose the network from the bottom right and check “Connect automatically”.">Valitse verkko oikeasta alakulmasta ja rastita “Yhdistä automaattisesti”.</div></div>
 <div class="stepCard"><div class="stepNo">3</div><div class="stepTitle" data-fi="Käyttäjätunnus" data-en="Username">Käyttäjätunnus</div><div class="stepValue">.\Abitti</div><div class="stepHint" data-fi="Sama käyttäjätunnus kaikille." data-en="The same username for everyone.">Sama käyttäjätunnus kaikille.</div></div>
 <div class="stepCard"><div class="stepNo">4</div><div class="stepTitle" data-fi="Salasana" data-en="Password">Salasana</div><div class="stepValue">__STUDENT_PASSWORD__</div><div class="stepHint" data-fi="Sama opiskelijan salasana kaikille." data-en="The same student password for everyone.">Sama opiskelijan salasana kaikille.</div></div>
 <div class="stepCard"><div class="stepNo">5</div><div class="stepTitle" data-fi="Palvelin" data-en="Server">Palvelin</div><div id="studentServerBig" class="stepValue server">ktp1<span id="studentSuffixPreview"></span></div><div class="stepHint" data-fi="Kirjoita palvelin täsmälleen tässä muodossa." data-en="Enter the server exactly in this format.">Kirjoita palvelin täsmälleen tässä muodossa.</div></div>
