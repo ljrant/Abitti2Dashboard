@@ -1,11 +1,136 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Koulukohtaiset muutokset · Abitti2Dashboard</title>
-<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:auto;padding:28px;line-height:1.6;color:#172536;background:#f3f7f8}section{background:#fff;border:1px solid #d5e1e8;border-radius:12px;padding:18px;margin:14px 0}code{background:#edf2f5;padding:2px 5px;border-radius:5px}a{color:#0067a8}h1,h2{color:#102a43}</style></head>
-<body><p><a href="./">← Abitti2Dashboard</a></p><h1>Koulukohtaiset muutokset</h1>
-<section><h2>Milloin muutokset tehdään?</h2><p>Tee koulukohtaiset muutokset ennen EXE:n rakentamista. Avaa <code>src/Program.Core.cs</code>, tee muutokset ja käynnistä sen jälkeen <code>Rakenna_ja_kaynnista.cmd</code>. Jos muutat asetuksia myöhemmin, rakenna EXE uudelleen.</p></section>
-<section><h2>Mistä asetukset löytyvät?</h2><p>Etsi lähdekoodista merkintä <code>[KOULU][ASETUKSET]</code>. Samassa kohdassa ovat KTP-osoitteiden loppuosa, opiskelijalle näytettävä palvelinmuoto, palvelinvarauksen linkki, koulun oma tietolinkki, koeverkon nimi, opiskelijan Windows-kirjautumistiedot ja kokeen purkukoodin oletusarvo.</p><p><code>StudentServerSuffix</code> on vain osoitteen loppuosa, esimerkiksi <code>.1068</code>, koska ohjelma lisää alkuun automaattisesti <code>ktp1</code>, <code>ktp2</code> jne.</p></section>
-<section><h2>KTP-kohtaiset oletukset</h2><p>Etsi merkintä <code>[KOULU][OLETUSSALASANAT]</code>. Taulukon ensimmäinen arvo vastaa KTP1:tä, toinen KTP2:ta ja niin edelleen. KTP5–KTP10 voivat olla tyhjiä, jos niitä ei käytetä.</p><p>Yhteydet-välilehdellä myöhemmin tallennetut arvot ohittavat EXE:n oletuksen kyseisellä Windows-käyttäjällä.</p></section>
-<section><h2>Rakentaminen</h2><ol><li>Tallenna muutokset.</li><li>Käynnistä <code>Rakenna_ja_kaynnista.cmd</code>.</li><li>Kun käännös onnistuu, kansioon syntyy <code>Abitti2Dashboard.exe</code>.</li><li>Avaa Yhteydet-välilehti ja tarkista palvelinten tila.</li></ol></section>
-<section><h2>Mitä ei tarvitse muuttaa?</h2><p>Jos koulun osoiterakenne ja kirjautumisohjeiden tiedot sopivat valmiisiin oletuksiin, ohjelman voi rakentaa ilman muita lähdekoodimuutoksia. Käytön aikana muuttuvat KTP-kohtaiset kirjautumistiedot voi päivittää Yhteydet-välilehdeltä.</p></section>
-</body></html>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172536;background:#eef5f6;--navy:#102a43;--blue:#0067a8;--violet:#5c4bb7;--line:#d5e1e8;--muted:#647487;--warn:#8a5b00}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}.hero{background:linear-gradient(120deg,var(--navy),#174b65 55%,var(--violet));color:white;padding:42px 20px}.wrap{max-width:980px;margin:auto}main{padding:26px 20px 60px}a{color:var(--blue)}.hero a{color:#d9f3f4}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;margin:14px 0}h1{margin:8px 0 6px}h2{color:var(--navy);margin-top:32px}h3{color:var(--navy);margin:0 0 6px}.setting{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}.setting code{font-size:15px;font-weight:800}.setting .effect{margin-top:8px}.example{background:#f6f8fa;border-left:4px solid var(--violet);padding:10px 12px;margin-top:10px;border-radius:6px}.warn{background:#fff7e8;border:1px solid #ebcf91;border-radius:12px;padding:14px 16px;color:#6f4b00}.ok{background:#eef8f4;border:1px solid #bddfce;border-radius:12px;padding:14px 16px}.muted{color:var(--muted)}code{background:#edf2f5;padding:2px 5px;border-radius:5px}pre{background:#102a43;color:#edf7fa;padding:14px;border-radius:10px;overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--navy);background:#f7fafb}.steps{display:grid;gap:9px}.step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}.n{width:28px;height:28px;border-radius:50%;background:var(--violet);color:white;display:grid;place-items:center;font-weight:800}@media(max-width:700px){table{font-size:14px}th:nth-child(3),td:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<a href="./">← Abitti2Dashboard</a>
+<h1>Koulukohtaiset muutokset</h1>
+<p>Kaikki tavalliset koulukohtaiset oletukset on koottu yhteen kohtaan lähdekoodissa. Tämä sivu kertoo, mitä kukin asetus muuttaa ja milloin muutos pitää tehdä.</p>
+</div></header>
+
+<main class="wrap">
+<div class="warn"><b>Tee nämä muutokset ennen EXE:n rakentamista.</b> Avaa <code>src/Program.Core.cs</code>, muuta arvot ja käynnistä vasta sen jälkeen <code>Rakenna_ja_kaynnista.cmd</code>. Jos muutat lähdekoodin oletuksia myöhemmin, rakenna EXE uudelleen.</div>
+
+<h2>Mistä asetukset löytyvät?</h2>
+<div class="card">
+<p>Avaa <code>src/Program.Core.cs</code> ja etsi:</p>
+<pre>[KOULU][ASETUKSET]</pre>
+<p>Heti tämän otsikon alla ovat tavalliset koulukohtaiset asetukset. KTP-palvelinten oletussalasanat löytyvät hieman alempaa kohdasta:</p>
+<pre>[KOULU][OLETUSSALASANAT]</pre>
+</div>
+
+<h2>Mitä kukin asetus tekee?</h2>
+
+<div class="setting">
+<h3><code>KtpDomainSuffix</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> kaikkien KTP1–KTP10-palvelinten varsinaiset verkko-osoitteet, joihin ohjelma yrittää yhdistää.</div>
+<div class="example">Jos arvo on <code>.1068.koe.abitti.net</code>, KTP3:n osoitteeksi muodostuu <code>ktp3.1068.koe.abitti.net</code>.</div>
+<p><b>Milloin muuta:</b> jos koulun KTP-palvelimissa käytettävä koulunumero/domain on eri.</p>
+<p><b>Jos arvo on väärä:</b> palvelimet eivät löydy, vaikka salasanat olisivat oikein.</p>
+</div>
+
+<div class="setting">
+<h3><code>StudentServerSuffix</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan kirjautumisohjeessa näytettävän lyhyen palvelinosoitteen.</div>
+<div class="example">Arvolla <code>.1068</code> opiskelijalle näytetään esimerkiksi <code>ktp1.1068</code> tai <code>ktp4.1068</code>. Ohjelma lisää <code>ktpN</code>-osan itse valitun palvelimen mukaan.</div>
+<p><b>Milloin muuta:</b> jos opiskelijoille annettava palvelinnimi käyttää eri koulunumeroa.</p>
+<p><b>Huomio:</b> tähän ei kirjoiteta <code>ktp1.1068</code>, koska silloin KTP2–KTP10 muodostuisivat väärin.</p>
+</div>
+
+<div class="setting">
+<h3><code>ReservationUrl</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> Hallinta-sivun pikalinkin, josta opettaja varaa KTP-palvelimia.</div>
+<div class="example">Esimerkiksi Wilman palvelinvaraus- tai aikataulusivu.</div>
+<p><b>Milloin muuta:</b> jos toisessa koulussa palvelimet varataan eri osoitteesta.</p>
+<p><b>Jos linkkiä ei tarvita:</b> sen voi vaihtaa koulun muuhun ohjesivuun tai jättää tarkoituksella neutraaliksi.</p>
+</div>
+
+<div class="setting">
+<h3><code>PasswordFileUrl</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> pikalinkin, josta valvoja löytää koulun ajantasaiset KTP-valvoja-salasanat.</div>
+<div class="example">Tyypillisesti koulun intranetissä tai SharePointissa oleva salasanataulukko.</div>
+<p><b>Milloin muuta:</b> aina, jos ohjelma otetaan käyttöön toisessa koulussa ja sillä on oma salasanojen jakopaikka.</p>
+<p><b>Huomio:</b> linkki näkyy käyttöliittymässä, joten käytä vain sellaista osoitetta, jonka näkyminen valvontakoneella on tarkoituksenmukaista.</p>
+</div>
+
+<div class="setting">
+<h3><code>StudentWifi</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan kirjautumisohjeessa isolla näytettävän koeverkon nimen.</div>
+<div class="example">Nykyinen oletus on <code>espoo_koeverkko1</code>.</div>
+<p><b>Milloin muuta:</b> jos koulun koeverkon SSID on eri.</p>
+<p><b>Jos arvo on väärä:</b> opiskelija voi yrittää liittyä väärään langattomaan verkkoon.</p>
+</div>
+
+<div class="setting">
+<h3><code>StudentUsername</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan Windows-kirjautumisohjeessa näytettävän käyttäjätunnuksen.</div>
+<div class="example">Nykyinen oletus on <code>.\Abitti</code>.</div>
+<p><b>Milloin muuta:</b> vain jos koulun opiskelijakoneissa käytetään eri paikallista tunnusta.</p>
+</div>
+
+<div class="setting">
+<h3><code>StudentPassword</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan kirjautumisohjeessa näytettävän Windows-salasanan.</div>
+<p><b>Milloin muuta:</b> jos opiskelijakoneiden yhteinen kirjautumissalasana vaihtuu tai toisessa koulussa käytetään eri salasanaa.</p>
+<p><b>Huomio:</b> tämä arvo päätyy rakennettuun EXE:en ja näkyy opiskelijan ohjesivulla. Sitä ei pidä käyttää mihinkään muuhun järjestelmään liittyvänä salaisuutena.</p>
+</div>
+
+<div class="setting">
+<h3><code>DefaultDecryptPassword</code></h3>
+<div class="effect"><b>Mitä se muuttaa:</b> <b>Tuo koe</b> -toiminnon purkukoodi-ikkunaan valmiiksi kirjoitettavan oletusarvon.</div>
+<div class="example">Kun KTP on vastaanottanut koetiedoston, dashboard avaa purkukoodi-ikkunan. Tämä arvo näkyy siinä valmiina, mutta käyttäjä voi muuttaa sitä ennen <b>Pura koe</b> -painiketta.</div>
+<p><b>Milloin muuta:</b> jos koululla on vakiintunut oletuspurkukoodi, jonka haluat vähentävän käsin kirjoittamista.</p>
+<p><b>Jos arvo on väärä:</b> se ei itsessään käynnistä mitään. Käyttäjä voi korjata purkukoodin ennen lähettämistä tai yrittää uudelleen.</p>
+</div>
+
+<h2>KTP1–KTP10:n oletussalasanat</h2>
+<div class="card">
+<p>Etsi <code>[KOULU][OLETUSSALASANAT]</code>. Taulukon järjestys on suoraan palvelinnumeron mukainen:</p>
+<table>
+<tr><th>Taulukon kohta</th><th>Palvelin</th><th>Käyttö</th></tr>
+<tr><td>1.</td><td>KTP1</td><td>KTP1:n valvoja-salasana</td></tr>
+<tr><td>2.</td><td>KTP2</td><td>KTP2:n valvoja-salasana</td></tr>
+<tr><td>3.</td><td>KTP3</td><td>KTP3:n valvoja-salasana</td></tr>
+<tr><td>4.</td><td>KTP4</td><td>KTP4:n valvoja-salasana</td></tr>
+<tr><td>5.–10.</td><td>KTP5–KTP10</td><td>Voivat olla tyhjiä, jos palvelimia ei käytetä oletuksena.</td></tr>
+</table>
+<p>Oletussalasana on uuden asennuksen lähtöarvo. Jos salasana päivitetään myöhemmin ohjelman <b>Yhteydet</b>-välilehdellä, koneelle tallennettu arvo ohittaa EXE:n sisäisen oletuksen.</p>
+<div class="ok"><b>Käytännössä:</b> lähdekoodin oletukset ovat hyödyllisiä silloin, kun sama EXE halutaan jakaa koulun koneille valmiiksi oikeilla lähtöasetuksilla. Päivittäisessä käytössä vaihtuvan yksittäisen KTP-salasanan voi vaihtaa suoraan Yhteydet-sivulta ilman uutta käännöstä.</div>
+</div>
+
+<h2>Mikä vaatii EXE:n rakentamisen uudelleen?</h2>
+<table>
+<tr><th>Muutos</th><th>Tarvitseeko rakentaa EXE uudelleen?</th></tr>
+<tr><td>KTP-domain</td><td><b>Kyllä</b></td></tr>
+<tr><td>Opiskelijan palvelinosoitteen muoto</td><td><b>Kyllä</b></td></tr>
+<tr><td>Palvelinvaraus- tai salasanalinkki</td><td><b>Kyllä</b></td></tr>
+<tr><td>WiFi / opiskelijan tunnus / opiskelijan salasana</td><td><b>Kyllä</b></td></tr>
+<tr><td>Purkukoodin oletusarvo</td><td><b>Kyllä</b></td></tr>
+<tr><td>Lähdekoodiin tallennettu KTP-oletussalasana</td><td><b>Kyllä</b></td></tr>
+<tr><td>Yhteydet-välilehdellä vaihdettu KTP-salasana</td><td><b>Ei</b> – tallennetaan käyttäjäkohtaisesti tällä koneella</td></tr>
+</table>
+
+<h2>Suositeltu etenemisjärjestys toisessa koulussa</h2>
+<div class="card steps">
+<div class="step"><div class="n">1</div><div>Tarkista koulun KTP-osoiterakenne ja muuta <code>KtpDomainSuffix</code> sekä <code>StudentServerSuffix</code>.</div></div>
+<div class="step"><div class="n">2</div><div>Vaihda opiskelijan kirjautumisohjeen WiFi, käyttäjätunnus ja salasana tarvittaessa.</div></div>
+<div class="step"><div class="n">3</div><div>Vaihda koulun omat pikalinkit.</div></div>
+<div class="step"><div class="n">4</div><div>Lisää halutut KTP-oletussalasanat.</div></div>
+<div class="step"><div class="n">5</div><div>Valitse haluttu kokeen purkukoodin oletusarvo.</div></div>
+<div class="step"><div class="n">6</div><div>Tallenna tiedosto ja käynnistä <code>Rakenna_ja_kaynnista.cmd</code>.</div></div>
+<div class="step"><div class="n">7</div><div>Tarkista <b>Yhteydet</b>-välilehdeltä sekä <b>Yhteys</b> että <b>Kirjautuminen</b> jokaiselle käytettävälle KTP:lle.</div></div>
+<div class="step"><div class="n">8</div><div>Avaa yhden palvelimen opiskelijan kirjautumisohje ja varmista, että verkko-, tunnus- ja palvelintiedot näkyvät oikein.</div></div>
+</div>
+
+<p><a href="./">← Takaisin projektisivulle</a></p>
+</main>
+</body>
+</html>
