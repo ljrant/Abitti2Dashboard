@@ -1,0 +1,17 @@
+# Local build output
+AbittiHallinta.exe
+*.pdb
+
+# Local runtime data
+settings.dat
+*.log
+
+# Temporary files
+_ui.generated.html
+*.tmp
+*.bak
+
+# IDE/build folders
+.vs/
+bin/
+obj/
