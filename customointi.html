@@ -6,7 +6,7 @@
 <title>Koulukohtaiset muutokset · Abitti2Dashboard</title>
 <style>
 :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172536;background:#eef5f6;--navy:#102a43;--blue:#0067a8;--violet:#5c4bb7;--line:#d5e1e8;--muted:#647487;--warn:#8a5b00}
-*{box-sizing:border-box}body{margin:0;line-height:1.6}.hero{background:linear-gradient(120deg,var(--navy),#174b65 55%,var(--violet));color:white;padding:42px 20px}.wrap{max-width:980px;margin:auto}main{padding:26px 20px 60px}a{color:var(--blue)}.hero a{color:#d9f3f4}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;margin:14px 0}h1{margin:8px 0 6px}h2{color:var(--navy);margin-top:32px}h3{color:var(--navy);margin:0 0 6px}.setting{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}.setting code{font-size:15px;font-weight:800}.setting .effect{margin-top:8px}.example{background:#f6f8fa;border-left:4px solid var(--violet);padding:10px 12px;margin-top:10px;border-radius:6px}.warn{background:#fff7e8;border:1px solid #ebcf91;border-radius:12px;padding:14px 16px;color:#6f4b00}.ok{background:#eef8f4;border:1px solid #bddfce;border-radius:12px;padding:14px 16px}.muted{color:var(--muted)}code{background:#edf2f5;padding:2px 5px;border-radius:5px}pre{background:#102a43;color:#edf7fa;padding:14px;border-radius:10px;overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--navy);background:#f7fafb}.steps{display:grid;gap:9px}.step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}.n{width:28px;height:28px;border-radius:50%;background:var(--violet);color:white;display:grid;place-items:center;font-weight:800}@media(max-width:700px){table{font-size:14px}th:nth-child(3),td:nth-child(3){display:none}}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}.hero{background:linear-gradient(120deg,var(--navy),#174b65 55%,var(--violet));color:white;padding:42px 20px}.wrap{max-width:980px;margin:auto}main{padding:26px 20px 60px}a{color:var(--blue)}.hero a{color:#d9f3f4}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;margin:14px 0}h1{margin:8px 0 6px}h2{color:var(--navy);margin-top:32px}h3{color:var(--navy);margin:0 0 6px}.setting{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}.setting code{font-size:15px;font-weight:800}.setting .effect{margin-top:8px}.example{background:#f6f8fa;border-left:4px solid var(--violet);padding:10px 12px;margin-top:10px;border-radius:6px}.warn{background:#fff7e8;border:1px solid #ebcf91;border-radius:12px;padding:14px 16px;color:#6f4b00}.ok{background:#eef8f4;border:1px solid #bddfce;border-radius:12px;padding:14px 16px}.muted{color:var(--muted)}code{background:#edf2f5;padding:2px 5px;border-radius:5px}pre{background:#102a43;color:#edf7fa;padding:14px;border-radius:10px;overflow:auto}.codeblock{background:#0f2133;border:1px solid #28455f;border-radius:12px;padding:16px;overflow:auto;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.tok-comment{color:#8fd7a8}.tok-key{color:#8bc5ff;font-weight:700}.tok-name{color:#ffd479}.tok-string{color:#ffb6c8}.tok-type{color:#d8b4fe}.tok-punct{color:#dce8f0}.legend{display:flex;gap:12px;flex-wrap:wrap;margin:9px 0 12px;font-size:13px}.legend span{display:inline-flex;align-items:center;gap:6px}.sw{width:12px;height:12px;border-radius:3px;display:inline-block}.sw.comment{background:#8fd7a8}.sw.name{background:#ffd479}.sw.string{background:#ffb6c8}.sw.type{background:#d8b4fe}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--navy);background:#f7fafb}.steps{display:grid;gap:9px}.step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}.n{width:28px;height:28px;border-radius:50%;background:var(--violet);color:white;display:grid;place-items:center;font-weight:800}@media(max-width:700px){table{font-size:14px}th:nth-child(3),td:nth-child(3){display:none}}
 </style>
 </head>
 <body>
@@ -26,6 +26,62 @@
 <p>Heti tämän otsikon alla ovat tavalliset koulukohtaiset asetukset. KTP-palvelinten oletussalasanat löytyvät hieman alempaa kohdasta:</p>
 <pre>[KOULU][OLETUSSALASANAT]</pre>
 </div>
+
+<h2>Koko asetuskoodi</h2>
+<div class="card">
+<p>Tämä on se lähdekoodin osa, jota yleensä muokataan koulua varten. Värit auttavat erottamaan kommentit, asetusten nimet, tyypit ja varsinaiset arvot.</p>
+<div class="legend">
+<span><i class="sw comment"></i> kommentti / ohje</span>
+<span><i class="sw name"></i> asetuksen nimi</span>
+<span><i class="sw string"></i> muutettava arvo</span>
+<span><i class="sw type"></i> C#-tyyppi / rakenne</span>
+</div>
+<div class="codeblock"><span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">Username</span> = <span class="tok-string">"valvoja"</span>;
+
+<span class="tok-comment">// ==========================================================================</span>
+<span class="tok-comment">// [KOULU][ASETUKSET] TAVALLISET LUKIOKOHTAISET MUUTOKSET TEHDÄÄN TÄSSÄ</span>
+<span class="tok-comment">// ==========================================================================</span>
+<span class="tok-comment">// KtpDomainSuffix     = KTP-palvelinten osoitteen loppuosa, esim. ktp1 + tämä arvo.</span>
+<span class="tok-comment">// StudentServerSuffix = opiskelijalle näytettävä osoitteen loppuosa.</span>
+<span class="tok-comment">// ReservationUrl      = linkki, josta opettajat varaavat KTP-palvelimia.</span>
+<span class="tok-comment">// PasswordFileUrl     = intranet-linkki ajantasaiseen valvoja-salasanataulukkoon.</span>
+<span class="tok-comment">// StudentWifi         = opiskelijoille näytettävä koeverkon nimi.</span>
+<span class="tok-comment">// StudentUsername     = opiskelijoille näytettävä Windows-käyttäjätunnus.</span>
+<span class="tok-comment">// StudentPassword     = opiskelijoille näytettävä Windows-salasana.</span>
+<span class="tok-comment">// DefaultDecryptPassword = Tuo koe -ikkunaan esitäytettävä purkukoodi.</span>
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">KtpDomainSuffix</span> = <span class="tok-string">".1068.koe.abitti.net"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentServerSuffix</span> = <span class="tok-string">".1068"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">ReservationUrl</span> = <span class="tok-string">"https://example.invalid/palvelinvaraus"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">PasswordFileUrl</span> = <span class="tok-string">"https://example.invalid/valvojan-salasanat"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentWifi</span> = <span class="tok-string">"espoo_koeverkko1"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentUsername</span> = <span class="tok-string">@".\\Abitti"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentPassword</span> = <span class="tok-string">"Opiskelu_koe-26#"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">DefaultDecryptPassword</span> = <span class="tok-string">"VAIHDA_OLETUS_PURKUKOODI_TÄHÄN"</span>;
+
+<span class="tok-comment">// [KOULU][OLETUSSALASANAT] Uuden asennuksen lähtöarvot.</span>
+<span class="tok-comment">// Yhteydet-välilehdellä myöhemmin tallennetut salasanat ohittavat nämä arvot.</span>
+<span class="tok-comment">// KTP5-KTP10 voivat olla tyhjiä.</span>
+<span class="tok-key">static readonly</span> <span class="tok-type">string[]</span> <span class="tok-name">DefaultPasswords</span> = {
+    <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>,
+    <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>
+};</div>
+<p class="muted"><b>Muokkaa vain lainausmerkkien sisällä olevia arvoja</b>, ellei tiedä tarkasti mitä tekee. Esimerkiksi <code>KtpDomainSuffix</code>-rivillä vaihdetaan vain <code>".1068.koe.abitti.net"</code>.</p>
+</div>
+
+<h2>Rivikohtainen pikaopas</h2>
+<table>
+<tr><th>Koodi</th><th>Mitä käyttäjä muuttaa</th><th>Mihin se vaikuttaa</th></tr>
+<tr><td><code>Username</code></td><td>Yleensä ei mitään</td><td>KTP:n Basic Auth -käyttäjätunnus. Oletus <code>valvoja</code>.</td></tr>
+<tr><td><code>KtpDomainSuffix</code></td><td>Koulunumero/domain</td><td>Kaikkien KTP-palvelinten oikeat verkko-osoitteet.</td></tr>
+<tr><td><code>StudentServerSuffix</code></td><td>Opiskelijalle annettava lyhyt loppuosa</td><td>Kirjautumisohjeessa näytettävä <code>ktpN.xxxx</code>.</td></tr>
+<tr><td><code>ReservationUrl</code></td><td>Koulun varauslinkki</td><td>Hallinta-sivun palvelinvarauspainike.</td></tr>
+<tr><td><code>PasswordFileUrl</code></td><td>Koulun oma tietolinkki</td><td>Hallinta-sivun linkki valvoja-salasanoihin.</td></tr>
+<tr><td><code>StudentWifi</code></td><td>Koeverkon nimi</td><td>Opiskelijan kirjautumisohje.</td></tr>
+<tr><td><code>StudentUsername</code></td><td>Opiskelijakoneen tunnus</td><td>Opiskelijan kirjautumisohje.</td></tr>
+<tr><td><code>StudentPassword</code></td><td>Opiskelijakoneen salasana</td><td>Opiskelijan kirjautumisohje.</td></tr>
+<tr><td><code>DefaultDecryptPassword</code></td><td>Oletuspurkukoodi</td><td>Tuo koe -toiminnon purkukoodi-ikkunan esitäyttö.</td></tr>
+<tr><td><code>DefaultPasswords</code></td><td>KTP1–KTP10 oletussalasanat järjestyksessä</td><td>Automaattinen kirjautuminen KTP-palvelimiin uuden asennuksen alussa.</td></tr>
+</table>
 
 <h2>Mitä kukin asetus tekee?</h2>
 
