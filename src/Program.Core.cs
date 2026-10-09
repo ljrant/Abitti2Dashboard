@@ -15,7 +15,7 @@ using System.Web.Script.Serialization;
 
 internal static partial class Program
 {
-    const string Version = "16.7-exe";
+    const string Version = "16.8-exe";
 
     /*
      * [AUDIT][KOETUONTI][v16.7]
@@ -90,14 +90,14 @@ internal static partial class Program
     // StudentUsername     = opiskelijoille näytettävä Windows-käyttäjätunnus.
     // StudentPassword     = opiskelijoille näytettävä Windows-salasana.
     // DefaultDecryptPassword = Tuo koe -ikkunaan esitäytettävä purkukoodi.
-    const string KtpDomainSuffix = ".XXXX.koe.abitti.net";
-    const string StudentServerSuffix = ".XXXX";
+    const string KtpDomainSuffix = ".1068.koe.abitti.net";
+    const string StudentServerSuffix = ".1068";
     const string ReservationUrl = "https://example.invalid/palvelinvaraus";
     const string PasswordFileUrl = "https://example.invalid/valvojan-salasanat";
-    const string StudentWifi = "VAIHDA_KOEVERKON_NIMI";
+    const string StudentWifi = "espoo_koeverkko1";
     const string StudentUsername = @".\Abitti";
-    const string StudentPassword = "VAIHDA_OPISKELIJASALASANA";
-    const string DefaultDecryptPassword = "VAIHDA_PURKUKOODI";
+    const string StudentPassword = "Opiskelu_koe-26#";
+    const string DefaultDecryptPassword = "VAIHDA_OLETUS_PURKUKOODI_TÄHÄN";
 
     // [KOULU][OLETUSSALASANAT] Uuden asennuksen lähtöarvot.
     // Yhteydet-välilehdellä myöhemmin tallennetut salasanat ohittavat nämä arvot
@@ -136,7 +136,7 @@ internal static partial class Program
     {
         // [AUDIT][UI] Käyttöliittymä kootaan build-skriptissä ja upotetaan EXE:en resurssina.
         var asm = System.Reflection.Assembly.GetExecutingAssembly();
-        using (var s = asm.GetManifestResourceStream("AbittiHallinta.ui.html"))
+        using (var s = asm.GetManifestResourceStream("Abitti2Dashboard.ui.html"))
         using (var r = new StreamReader(s, Encoding.UTF8))
         {
             string h = r.ReadToEnd();
@@ -157,14 +157,20 @@ internal static partial class Program
     {
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-        SettingsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AbittiHallinta");
+        SettingsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Abitti2Dashboard");
         Directory.CreateDirectory(SettingsDir);
         SettingsFile = Path.Combine(SettingsDir, "settings.dat");
-        LogFile = Path.Combine(SettingsDir, "AbittiHallinta.log");
+        LogFile = Path.Combine(SettingsDir, "Abitti2Dashboard.log");
+        // Siirrä vanhan AbittiHallinta-nimen asetukset automaattisesti, jos uusi asetustiedosto puuttuu.
+        try {
+            string legacyDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AbittiHallinta");
+            string legacySettings = Path.Combine(legacyDir, "settings.dat");
+            if(!File.Exists(SettingsFile) && File.Exists(legacySettings)) File.Copy(legacySettings, SettingsFile, false);
+        } catch {}
         InitServers(); LoadPasswords();
         CloseOlderInstances();
         Port=8765;
-        if (!TryStartListener(Port)) { System.Windows.Forms.MessageBox.Show("Portti 8765 on edelleen käytössä. Sulje mahdollinen muu AbittiHallinta.exe tai porttia käyttävä ohjelma ja yritä uudelleen.", "AbittiHallinta"); return; }
+        if (!TryStartListener(Port)) { System.Windows.Forms.MessageBox.Show("Portti 8765 on edelleen käytössä. Sulje mahdollinen muu Abitti2Dashboard.exe tai porttia käyttävä ohjelma ja yritä uudelleen.", "Abitti2Dashboard"); return; }
         Log("Käynnistyi v"+Version+" portissa "+Port);
         RestartWs();
         Thread serverThread = new Thread(ServerLoop){IsBackground=true}; serverThread.Start();
@@ -177,7 +183,7 @@ internal static partial class Program
     {
         try {
             int me=Process.GetCurrentProcess().Id;
-            foreach(var p in Process.GetProcessesByName("AbittiHallinta")) {
+            foreach(var processName in new[]{"Abitti2Dashboard","AbittiHallinta"}) foreach(var p in Process.GetProcessesByName(processName)) {
                 try { if(p.Id!=me) { p.Kill(); p.WaitForExit(5000); } } catch {}
                 try { p.Dispose(); } catch {}
             }
