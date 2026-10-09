@@ -26,7 +26,7 @@ if not exist "ui.html" (
 
 echo Rakennetaan Abitti2Dashboard.exe...
 "%CSC%" /nologo /target:winexe /out:Abitti2Dashboard.exe ^
- /resource:ui.html,Abitti2Dashboard.ui.html ^
+ /resource:ui.html,AbittiHallinta.ui.html ^
  /reference:System.dll ^
  /reference:System.Core.dll ^
  /reference:System.Web.Extensions.dll ^
