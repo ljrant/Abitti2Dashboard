@@ -131,6 +131,35 @@
 <p><b>Poikkeus:</b> <code>DefaultPasswords</code>-taulukossa jokainen lainausmerkkien välinen arvo vastaa yhtä KTP-palvelinta järjestyksessä KTP1 → KTP10.</p>
 </div>
 
+
+<h2>Koko asetusosio yhdellä silmäyksellä</h2>
+<div class="card">
+<p>Tämä on se lohko, jota muokataan ennen EXE:n rakentamista. Värit vastaavat alla olevia selitteitä.</p>
+<pre style="background:#0f1f2f;color:#eaf1f6;padding:16px;border-radius:12px;overflow:auto;line-height:1.55"><code>
+<span style="color:#8fa6b8">// [KOULU][ASETUKSET]</span>
+<span style="color:#8dc8ff">const string KtpDomainSuffix = ".KOULUN_NUMERO.koe.abitti.net";</span>
+<span style="color:#8dc8ff">const string StudentServerSuffix = ".KOULUN_NUMERO";</span>
+<span style="color:#8fe0b2">const string ReservationUrl = "VAIHDA_PALVELINVARAUKSEN_LINKKI";</span>
+<span style="color:#8fe0b2">const string PasswordFileUrl = "VAIHDA_SALASANALISTAN_LINKKI";</span>
+<span style="color:#c9a7ff">const string StudentWifi = "VAIHDA_KOEVERKON_NIMI";</span>
+<span style="color:#c9a7ff">const string StudentUsername = @"VAIHDA_OPISKELIJAN_TUNNUS";</span>
+<span style="color:#c9a7ff">const string StudentPassword = "VAIHDA_OPISKELIJAN_SALASANA";</span>
+<span style="color:#ffbd8a">const string DefaultDecryptPassword = "VAIHDA_PURKUKOODIN_OLETUS";</span>
+
+<span style="color:#8fa6b8">// [KOULU][OLETUSSALASANAT]</span>
+<span style="color:#ffe58a">static readonly string[] DefaultPasswords = {
+    "KTP1", "KTP2", "KTP3", "KTP4", "", "", "", "", "", ""
+};</span>
+</code></pre>
+</div>
+<div class="card">
+<p><b style="color:#5da2e3">Sininen:</b> KTP-palvelinten osoitteet.</p>
+<p><b style="color:#5ab883">Vihreä:</b> koulun omat pikalinkit.</p>
+<p><b style="color:#9a77d6">Violetti:</b> opiskelijan kirjautumisohjeessa näkyvät tiedot.</p>
+<p><b style="color:#e18a4b">Oranssi:</b> kokeen purkukoodin oletusarvo.</p>
+<p><b style="color:#b18f00">Keltainen:</b> KTP1–KTP10:n valvoja-salasanojen oletusarvot.</p>
+</div>
+
 <h2>Mitä kukin asetus tekee?</h2>
 
 <div class="setting">
