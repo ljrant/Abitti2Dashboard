@@ -1,4 +1,4 @@
-# Abitti2Dashboard / AbittiHallinta
+# Abitti2Dashboard
 
 Windows-työkalu usean Abitti2:n KTP-palvelimen hallintaan samasta näkymästä.
 
@@ -8,14 +8,12 @@ Ohjelma näyttää palvelinten yhteyden ja kirjautumisen tilan, kokeet, vastaust
 
 ## Ensikäyttö
 
-1. Lataa repository ZIP:nä GitHubista ja pura se paikalliseen kansioon.
-2. Tarkista halutessasi lähdekoodi. Keskeiset turvallisuus- ja muokkauskohdat on merkitty `[AUDIT]`- ja `[KOULU]`-kommenteilla.
-3. Avaa `src/Program.Core.cs` ja täytä oman koulun asetukset kohdasta **`[KOULU][ASETUKSET]`**. Julkiseen repositoryyn ei ole tallennettu oikeita salasanoja tai sisäisiä koululinkkejä.
-4. Jos haluat KTP-palvelimille valmiit oletussalasanat uuteen EXE:en, täytä ne kohdassa **`[KOULU][OLETUSSALASANAT]`**.
-5. Käynnistä `Rakenna_ja_kaynnista.cmd`.
-6. Skripti rakentaa `AbittiHallinta.exe`:n ja käynnistää sen.
-7. Jatkossa EXE:n voi käynnistää suoraan.
-8. Tarkista **Yhteydet**-välilehdeltä, löytyvätkö KTP-palvelimet ja onnistuuko kirjautuminen.
+1. Lataa projektisivulta **ohjelmapaketti** ja pura se paikalliseen kansioon.
+2. Tee mahdolliset koulukohtaiset muutokset **ennen** EXE:n rakentamista. Katso [Koulukohtaiset muutokset](https://ljrant.github.io/Abitti2Dashboard/customointi.html).
+3. Käynnistä `Rakenna_ja_kaynnista.cmd`.
+4. Skripti rakentaa `Abitti2Dashboard.exe`:n ja käynnistää sen.
+5. Jatkossa EXE:n voi käynnistää suoraan.
+6. Tarkista **Yhteydet**-välilehdeltä, löytyvätkö KTP-palvelimet ja onnistuuko kirjautuminen.
 
 KTP1–KTP4 yritetään yhdistää automaattisesti. KTP5–KTP10 otetaan käyttöön tarvittaessa **Yhdistä**-painikkeella.
 
@@ -71,13 +69,13 @@ Oletussalasanat löytyvät samasta tiedostosta kohdasta:
 Käytön aikana **Yhteydet**-välilehdellä tallennetut valvoja-salasanat ohittavat lähdekoodin oletusarvot. Ne tallennetaan Windows-käyttäjäkohtaisesti DPAPI-suojattuina:
 
 ```
-%LOCALAPPDATA%\AbittiHallinta\settings.dat
+%LOCALAPPDATA%\Abitti2Dashboard\settings.dat
 ```
 
 Loki:
 
 ```
-%LOCALAPPDATA%\AbittiHallinta\AbittiHallinta.log
+%LOCALAPPDATA%\Abitti2Dashboard\Abitti2Dashboard.log
 ```
 
 ## Tuo koe
@@ -101,19 +99,6 @@ Ohjelma vain näyttää KTP:n ilmoittaman palvelinryhmän. Ryhmät muodostetaan 
 Generaattori tekee muodollisesti oikeanlaisen testihenkilötunnuksen koetilanteen testaamista varten esimerkiksi silloin, kun opiskelija ei muista omaa HETUaan.
 
 Toimintoa ei ole vielä kattavasti testattu varsinaisessa koetilanteessa, eikä generaattori tarkista, osuuko luotu tunnus oikean henkilön tunnukseen.
-
-## Auditointi
-
-Lähdekoodissa on `[AUDIT]`-merkintöjä mm. seuraavista:
-
-- TLS ja KTP-yhteydet
-- salasanojen tallennus
-- WebSocket-datan suodatus
-- henkilötietojen minimointi
-- koetuonnin kohdepalvelimen säilyminen
-- prosessin ja localhost-portin elinkaari
-
-Ohjelma käyttää paikallista porttia `8765`.
 
 ## Repositoryn rakenne
 
