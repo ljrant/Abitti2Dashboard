@@ -1,26 +1,33 @@
 <!doctype html>
 <html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lataa ohjelmatiedostot · Abitti2Dashboard</title>
-<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:auto;padding:28px;line-height:1.6;color:#172536;background:#f3f7f8}section{background:#fff;border:1px solid #d5e1e8;border-radius:12px;padding:18px;margin:14px 0}a{color:#0067a8}code{background:#edf2f5;padding:2px 5px;border-radius:5px}.files{display:grid;gap:8px}.files a{display:block;background:#fff;border:1px solid #d5e1e8;border-radius:9px;padding:10px 12px;text-decoration:none;font-weight:700}</style>
-</head><body>
+<style>
+:root{font-family:system-ui,sans-serif;color:#172536;background:#f3f7f8;--blue:#0067a8;--navy:#102a43;--violet:#5c4bb7;--line:#d5e1e8}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}.wrap{max-width:900px;margin:auto;padding:28px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px;margin:16px 0}a{color:var(--blue)}h1,h2{color:var(--navy)}.download{display:inline-block;background:var(--violet);color:#fff;text-decoration:none;font-weight:800;padding:13px 18px;border-radius:9px}.muted{color:#647487}code{background:#edf2f5;padding:2px 5px;border-radius:5px}pre{background:#102a43;color:#edf7fa;padding:14px;border-radius:10px;overflow:auto}
+</style></head>
+<body><div class="wrap">
 <p><a href="./">← Abitti2Dashboard</a></p>
 <h1>Lataa ohjelmatiedostot</h1>
-<section><p>Tältä sivulta saat vain Abitti2Dashboardin rakentamiseen ja käyttöön tarvittavat tiedostot. GitHub Pages -sivuja tai muita projektitiedostoja ei tarvitse ladata.</p></section>
-<div class="files">
-<a href="https://raw.githubusercontent.com/ljrant/Abitti2Dashboard/main/Rakenna_ja_kaynnista.cmd" download>Rakenna_ja_kaynnista.cmd</a>
-<a href="https://raw.githubusercontent.com/ljrant/Abitti2Dashboard/main/ui.html" download>ui.html</a>
-<a href="https://raw.githubusercontent.com/ljrant/Abitti2Dashboard/main/src/Program.Core.cs" download>src/Program.Core.cs</a>
-<a href="https://raw.githubusercontent.com/ljrant/Abitti2Dashboard/main/src/Program.Http.cs" download>src/Program.Http.cs</a>
-<a href="https://raw.githubusercontent.com/ljrant/Abitti2Dashboard/main/src/Program.WebSocket.cs" download>src/Program.WebSocket.cs</a>
-<a href="https://raw.githubusercontent.com/ljrant/Abitti2Dashboard/main/src/Program.Storage.cs" download>src/Program.Storage.cs</a>
+
+<div class="card">
+<p>Lataa tästä yksi ZIP-paketti, joka sisältää vain Abitti2Dashboardin rakentamiseen ja käyttöön tarvittavat tiedostot.</p>
+<p><a class="download" href="https://github.com/ljrant/Abitti2Dashboard/archive/refs/heads/package.zip">Lataa Abitti2Dashboard-ohjelmapaketti.zip</a></p>
+<p class="muted">GitHub Pages -sivut, workflowt ja muut projektin ylläpitotiedostot eivät sisälly tähän pakettiin.</p>
 </div>
-<section><h2>Kansiorakenne</h2><pre>Abitti2Dashboard/
+
+<div class="card">
+<h2>Paketin sisältö</h2>
+<pre>Abitti2Dashboard-package/
+  README.md
   Rakenna_ja_kaynnista.cmd
   ui.html
   src/
     Program.Core.cs
     Program.Http.cs
     Program.WebSocket.cs
-    Program.Storage.cs</pre><p>Luo <code>src</code>-alikansio ja tallenna neljä C#-tiedostoa sinne ennen kuin käynnistät <code>Rakenna_ja_kaynnista.cmd</code>.</p></section>
+    Program.Storage.cs</pre>
+<p>Pura ZIP, tee tarvittaessa <a href="customointi.html">koulukohtaiset muutokset</a> ja käynnistä sen jälkeen <code>Rakenna_ja_kaynnista.cmd</code>.</p>
+</div>
+
 <p><a href="customointi.html">Koulukohtaiset muutokset →</a></p>
-</body></html>
+</div></body></html>
