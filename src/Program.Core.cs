@@ -157,16 +157,10 @@ internal static partial class Program
     {
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-        SettingsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Abitti2Dashboard");
+        SettingsDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AbittiHallinta");
         Directory.CreateDirectory(SettingsDir);
         SettingsFile = Path.Combine(SettingsDir, "settings.dat");
-        LogFile = Path.Combine(SettingsDir, "Abitti2Dashboard.log");
-        // Siirrä vanhan AbittiHallinta-nimen asetukset automaattisesti, jos uusi asetustiedosto puuttuu.
-        try {
-            string legacyDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Abitti2Dashboard");
-            string legacySettings = Path.Combine(legacyDir, "settings.dat");
-            if(!File.Exists(SettingsFile) && File.Exists(legacySettings)) File.Copy(legacySettings, SettingsFile, false);
-        } catch {}
+        LogFile = Path.Combine(SettingsDir, "AbittiHallinta.log");
         InitServers(); LoadPasswords();
         CloseOlderInstances();
         Port=8765;
