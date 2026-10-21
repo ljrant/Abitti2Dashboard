@@ -96,7 +96,7 @@ internal static partial class Program
     const string PasswordFileUrl = "https://example.invalid/valvojan-salasanat";
     const string StudentWifi = "espoo_koeverkko1";
     const string StudentUsername = @".\Abitti";
-    const string StudentPassword = "Opiskelu_koe-26#";
+    const string StudentPassword = "OpiskeluKoe-26#";
     const string DefaultDecryptPassword = "VAIHDA_OLETUS_PURKUKOODI_TÄHÄN";
 
     // [KOULU][OLETUSSALASANAT] Uuden asennuksen lähtöarvot.
