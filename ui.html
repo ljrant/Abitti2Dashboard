@@ -41,7 +41,7 @@ button,select,input{font:inherit}button{border:1px solid #c9d5df;background:#fff
 <div class="section"><h2>Yhteydet ja salasanat</h2><h3>Käyttöohje</h3><div id="usageInstructions" class="small"></div><div class="connectionNote small" style="margin-top:10px"><b>Painikkeet:</b> <b>Yhdistä</b> ottaa yksittäisen KTP-palvelimen käyttöön ja yrittää kirjautua siihen tallennetulla valvoja-salasanalla. <b>Yhdistä käytössä olevat uudelleen</b> katkaisee ja muodostaa uudelleen kaikkien jo käyttöön otettujen KTP-palvelinten live-yhteydet. Käytä sitä esimerkiksi verkkokatkon, salasanapäivityksen tai tilapäisen yhteysvirheen jälkeen. Se ei lisää uusia palvelimia käyttöön eikä muuta salasanoja.</div><div class="connectionNote small" style="margin-top:8px"><b>Ohjelman sulkeminen:</b> käytä yläpalkin <b>Sulje ohjelma</b> -painiketta. Jos hallintavälilehti suljetaan vahingossa ilman painiketta, EXE sulkee itsensä automaattisesti hetken kuluttua eikä jää taustalle varaamaan porttia.</div>
 <div class="helperBox" style="margin-top:10px"><div class="helperFact"><span>Käyttötila</span><strong id="helperMode">—</strong></div><div class="helperFact"><span>Helper-versio</span><strong id="helperVersion">—</strong></div><div class="helperFact"><span>Helper-yhteys</span><strong id="helperStatus">—</strong></div><div class="helperFact"><span>Hallintatoiminnot</span><strong id="adminStatus">—</strong></div></div>
 <div class="row" style="margin-top:10px"><button id="restartHelperWs">Yhdistä käytössä olevat uudelleen</button></div></div>
-<div class="section"><h3>KTP-yhteydet ja valvoja-salasanat</h3><p class="small muted">Samasta rivistä näet yhteyden ja kirjautumisen tilan sekä voit lisätä tai vaihtaa kyseisen KTP:n valvoja-salasanan. KTP1–KTP4 ovat oletuksena käytössä. KTP5–KTP10 otetaan käyttöön tarvittaessa.</p><p><a id="passwordExcelLink" href="#" target="_blank" rel="noopener">Avaa intranetin salasanataulukko ↗</a></p><div class="row" style="margin:8px 0 10px"><button id="togglePasswords">Näytä salasanakentät</button><button id="restartLive">Yhdistä käytössä olevat uudelleen</button></div><div class="connectionGrid" id="connectionGrid"></div><div id="passwordStatus" class="statusline"></div></div>
+<div class="section"><h3>KTP-yhteydet ja valvoja-salasanat</h3><p class="small muted">Samasta rivistä näet yhteyden ja kirjautumisen tilan sekä voit lisätä tai vaihtaa kyseisen KTP:n valvoja-salasanan. KTP1–KTP4 ovat oletuksena käytössä. KTP5–KTP10 otetaan käyttöön tarvittaessa.</p><p><a id="passwordExcelLink" href="#" target="_blank" rel="noopener">Avaa intranetin salasanataulukko ↗</a></p><div class="connectionGrid" id="connectionGrid"></div><div id="passwordStatus" class="statusline"></div></div>
 <div class="section"><h3>Mitä yhteystilat tarkoittavat?</h3><div class="connectionNote small"><b>EXE hoitaa omat KTP-yhteytensä ja kirjautumisensa itse.</b> <b>Yhteys</b> kertoo, saadaanko palvelimeen verkkoyhteys. <b>Kirjautuminen</b> kertoo erikseen, hyväksyikö KTP tallennetun valvoja-salasanan. Väärällä salasanalla verkkoyhteys voi siis näkyä toimivana, vaikka kirjautuminen epäonnistuu.<br><br><b>Valvojan näkymän ensimmäinen selainkirjautuminen tehdään aina käsin.</b> Kun avaat KTP:n valvojan näkymän uuteen selainvälilehteen, kirjoita Basic Auth -ikkunaan käyttäjätunnus <b>valvoja</b> ja kyseisen KTP-palvelimen salasana. Hallinta-näkymän <b>Näytä salasana</b> -toiminto on tätä varten: salasana pysyy näkyvissä minuutin, sen voi kopioida <b>Kopioi</b>-painikkeella ja se piiloutuu sen jälkeen automaattisesti. EXE:n oma kirjautuminen ei siirry selaimen kirjautumisikkunaan, eikä sovellus lisää salasanaa URL-osoitteeseen.</div></div>
 </div></section>
 
@@ -263,7 +263,7 @@ function renderConnections(){
           <div class="connState"><span class="connStateDot ${authDot}"></span><span>Kirjautuminen <b class="${authClass}">${esc(authText)}</b>${extraAuth}</span></div>
         </div>
         <div class="connPassword">
-          <input id="pw-${srv.id}" type="password" placeholder="${hasPw?'Tallennettu – syötä uusi vaihtaaksesi':'Syötä valvoja-salasana'}">
+          <input id="pw-${srv.id}" type="password" placeholder="${hasPw?'Salasana tallennettu – syötä uusi vaihtaaksesi':'Syötä valvoja-salasana'}">
           <button data-save-password="${srv.id}">Tallenna</button>
         </div>
         <div class="connBottom">
@@ -303,12 +303,6 @@ async function refreshPasswordStatus(){
     renderConnections();
   }catch(e){$('passwordStatus').textContent=e.message}
 }
-$('togglePasswords').onclick=()=>{
-  const inputs=SERVERS.map(s=>$(`pw-${s.id}`)).filter(Boolean),show=inputs.some(x=>x.type==='password');
-  inputs.forEach(x=>x.type=show?'text':'password');
-  $('togglePasswords').textContent=show?'Piilota salasanakentät':'Näytä salasanakentät'
-};
-$('restartLive').onclick=async()=>{try{await helperFetch('/api/local/restart-live',{method:'POST'});$('passwordStatus').textContent='Käytössä olevat yhteydet käynnistetään uudelleen.'}catch(e){$('passwordStatus').textContent=e.message}};
 // [AUDIT][PALVELINRYHMÄT] Ryhmäjäsenyys johdetaan vain KTP:n live servers-datasta.
 // Sovellus ei tarjoa API-kutsuja ryhmien luontiin, purkuun tai palvelimen tyhjennykseen.
 function renderGroupState(){/* read-only: tieto näkyy Hallinta-kortin Palvelinryhmä-kentässä */}
