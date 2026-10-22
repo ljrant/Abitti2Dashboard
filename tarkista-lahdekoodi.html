@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lähdekoodin tarkistaminen · Abitti2Dashboard</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172536;background:#eef5f6;--navy:#102a43;--blue:#0067a8;--violet:#5c4bb7;--line:#d5e1e8;--muted:#647487}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}.hero{background:linear-gradient(120deg,var(--navy),#174b65 55%,var(--violet));color:white;padding:42px 20px}.wrap{max-width:940px;margin:auto}main{padding:28px 20px 60px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;margin:14px 0}.warn{background:#fff7e8;border:1px solid #ebcf91;border-radius:12px;padding:15px 17px;color:#6f4b00}.steps{display:grid;gap:10px}.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.step b{color:var(--navy)}a{color:var(--blue)}.hero a{color:#d9f3f4}code{background:#edf2f5;padding:2px 5px;border-radius:5px}pre{background:#102a43;color:#edf7fa;padding:15px;border-radius:10px;overflow:auto;white-space:pre-wrap}.muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap"><a href="./">← Abitti2Dashboard</a><h1>Lähdekoodin tarkistaminen</h1><p>Tarkista internetistä ladatun ohjelman lähdekoodi ennen ajamista. Älä luota pelkkään tiedoston nimeen, latauslinkkiin tai siihen, että ohjelma näyttää tutulta.</p></div></header>
+<main class="wrap">
+<div class="warn"><b>Suositus:</b> älä suorita <code>Rakenna_ja_kaynnista.cmd</code>-tiedostoa tai valmista EXE:tä ennen kuin olet vähintään vilkaissut lähdekoodin ja varmistanut, mitä se tekee.</div>
+
+<h2>Mitä tiedostoja kannattaa tarkistaa?</h2>
+<div class="card">
+<p>Abitti2Dashboardin toiminta on pääosin näissä tiedostoissa:</p>
+<ul>
+<li><code>Rakenna_ja_kaynnista.cmd</code> – mitä koneella suoritetaan rakennettaessa ja käynnistettäessä.</li>
+<li><code>src/Program.Core.cs</code> – käynnistys, asetukset ja ohjelman elinkaari.</li>
+<li><code>src/Program.Http.cs</code> – paikallinen HTTP-rajapinta ja KTP-kutsut.</li>
+<li><code>src/Program.WebSocket.cs</code> – KTP:n live-yhteydet.</li>
+<li><code>src/Program.Storage.cs</code> – asetusten/salasanojen tallennus ja apufunktiot.</li>
+<li><code>ui.html</code> – selaimessa näkyvä käyttöliittymä ja sen JavaScript.</li>
+</ul>
+</div>
+
+<h2>Näin avaat lähdekoodin</h2>
+<div class="steps">
+<div class="step"><b>1. Pura ZIP.</b> Älä aja mitään vielä.</div>
+<div class="step"><b>2. Avaa tiedostot tekstieditorilla.</b> Windowsin Muistio riittää. Helpompi vaihtoehto on esimerkiksi Visual Studio Code tai Notepad++.</div>
+<div class="step"><b>3. Napsauta tiedostoa hiiren oikealla → Avaa sovelluksella.</b> Valitse tekstieditori. C#-tiedostot päättyvät <code>.cs</code>, rakennusskripti <code>.cmd</code> ja käyttöliittymä <code>.html</code>.</div>
+<div class="step"><b>4. Tarkista erityisesti ulkoiset yhteydet ja komennot.</b> Etsi esimerkiksi sanoja <code>http</code>, <code>https</code>, <code>WebRequest</code>, <code>Process</code>, <code>File</code>, <code>Registry</code>, <code>cmd</code>, <code>powershell</code>, <code>delete</code> ja <code>password</code>.</div>
+<div class="step"><b>5. Varmista, että toiminta vastaa käyttötarkoitusta.</b> Tässä projektissa verkkoliikenteen pitäisi liittyä paikalliseen käyttöliittymään, määriteltyihin KTP-palvelimiin ja käyttäjän avaamiin koulun linkkeihin.</div>
+</div>
+
+<h2>Tarkistus tekoälyn avulla</h2>
+<div class="card">
+<p>Voit ladata lähdekooditiedostot tekoälypalveluun ja pyytää niitä tarkistettavaksi. Älä kuitenkaan lähetä tarkistukseen tiedostoja, joihin olet itse lisännyt oikeita salasanoja tai muita salaisia tietoja.</p>
+<p>Esimerkiksi seuraavan promptin voi kopioida:</p>
+<pre>Tarkista liitteenä olevan Abitti2Dashboard-ohjelman lähdekoodi turvallisuuden kannalta.
+
+Kerro selkeästi:
+1. Mitä ohjelma tekee käynnistyessään?
+2. Mihin verkko-osoitteisiin se muodostaa yhteyksiä?
+3. Käynnistääkö se muita prosesseja tai komentoja?
+4. Mitä tiedostoja se lukee, kirjoittaa tai poistaa?
+5. Tallentaako tai lähettääkö se salasanoja, henkilötietoja tai muita arkaluonteisia tietoja?
+6. Onko koodissa toimintoja, jotka eivät vaikuta tarpeellisilta ilmoitettuun käyttötarkoitukseen?
+7. Löytyykö epäilyttäviä latauksia, PowerShell/cmd-komentoja, rekisterimuutoksia, pysyvyyttä, piilotettua verkkoliikennettä tai etäkoodin suorittamista?
+8. Mitä riskejä koodissa on ja mitä pitäisi tarkistaa käsin ennen ohjelman ajamista?
+
+Perusta vastaus vain liitettyyn lähdekoodiin. Mainitse tiedoston nimi ja relevantti funktio tai koodikohta jokaisen havainnon yhteydessä. Älä oleta puuttuvien tiedostojen sisältöä.</pre>
+</div>
+
+<h2>Mitä tekoälytarkistus ei takaa?</h2>
+<div class="card">
+<p>Tekoälytarkistus on lisäapu, ei varma turvallisuustodistus. Se voi jättää ongelmia huomaamatta. Jos ohjelmaa käytetään tärkeässä koetilanteessa, tarkista myös, että ladattu lähdekoodi vastaa sitä versiota, jonka aiot itse rakentaa.</p>
+<p class="muted">Turvallisin tapa on rakentaa EXE itse tarkistamastasi lähdekoodista sen sijaan, että käyttäisit tuntemattomasta lähteestä saatua valmista suoritettavaa tiedostoa.</p>
+</div>
+
+<p><a href="./">← Takaisin projektisivulle</a></p>
+</main>
+</body>
+</html>
