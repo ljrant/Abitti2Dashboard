@@ -5,265 +5,76 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Koulukohtaiset muutokset · Abitti2Dashboard</title>
 <style>
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172536;background:#eef5f6;--navy:#102a43;--blue:#0067a8;--violet:#5c4bb7;--line:#d5e1e8;--muted:#647487;--warn:#8a5b00}
-*{box-sizing:border-box}body{margin:0;line-height:1.6}.hero{background:linear-gradient(120deg,var(--navy),#174b65 55%,var(--violet));color:white;padding:42px 20px}.wrap{max-width:980px;margin:auto}main{padding:26px 20px 60px}a{color:var(--blue)}.hero a{color:#d9f3f4}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;margin:14px 0}h1{margin:8px 0 6px}h2{color:var(--navy);margin-top:32px}h3{color:var(--navy);margin:0 0 6px}.setting{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:10px 0}.setting code{font-size:15px;font-weight:800}.setting .effect{margin-top:8px}.example{background:#f6f8fa;border-left:4px solid var(--violet);padding:10px 12px;margin-top:10px;border-radius:6px}.warn{background:#fff7e8;border:1px solid #ebcf91;border-radius:12px;padding:14px 16px;color:#6f4b00}.ok{background:#eef8f4;border:1px solid #bddfce;border-radius:12px;padding:14px 16px}.muted{color:var(--muted)}code{background:#edf2f5;padding:2px 5px;border-radius:5px}pre{background:#102a43;color:#edf7fa;padding:14px;border-radius:10px;overflow:auto}.codebox{background:#0f2133;color:#e8f2f5;border:1px solid #24445d;border-radius:12px;padding:16px;overflow:auto;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;white-space:pre}.codebox .com{color:#78c7a5}.codebox .kw{color:#8fc7ff}.codebox .type{color:#d7a6ff}.codebox .name{color:#f6d365}.codebox .str{color:#ffb98a}.codebox .arr{color:#9de0ff}.legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}.legend span{font:12px ui-monospace,SFMono-Regular,Consolas,monospace;padding:4px 7px;border-radius:6px;background:#f4f7f9;border:1px solid var(--line)}.legend .lcom{color:#287a5b}.legend .lname{color:#8a6500}.legend .lstr{color:#b65b20}.codeblock{background:#0f2133;border:1px solid #28455f;border-radius:12px;padding:16px;overflow:auto;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.tok-comment{color:#8fd7a8}.tok-key{color:#8bc5ff;font-weight:700}.tok-name{color:#ffd479}.tok-string{color:#ffb6c8}.tok-type{color:#d8b4fe}.tok-punct{color:#dce8f0}.legend{display:flex;gap:12px;flex-wrap:wrap;margin:9px 0 12px;font-size:13px}.legend span{display:inline-flex;align-items:center;gap:6px}.sw{width:12px;height:12px;border-radius:3px;display:inline-block}.sw.comment{background:#8fd7a8}.sw.name{background:#ffd479}.sw.string{background:#ffb6c8}.sw.type{background:#d8b4fe}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--navy);background:#f7fafb}.steps{display:grid;gap:9px}.step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}.n{width:28px;height:28px;border-radius:50%;background:var(--violet);color:white;display:grid;place-items:center;font-weight:800}@media(max-width:700px){table{font-size:14px}th:nth-child(3),td:nth-child(3){display:none}}
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172536;background:#eef5f6;--navy:#102a43;--blue:#0067a8;--violet:#5c4bb7;--line:#d5e1e8;--muted:#647487}
+*{box-sizing:border-box}body{margin:0;line-height:1.55}.hero{background:linear-gradient(120deg,var(--navy),#174b65 55%,var(--violet));color:#fff;padding:40px 20px}.wrap{max-width:980px;margin:auto}main{padding:24px 20px 56px}a{color:var(--blue)}.hero a{color:#d9f3f4}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px;margin:14px 0}.warn{background:#fff7e8;border:1px solid #ebcf91;border-radius:12px;padding:14px 16px;color:#6f4b00}h1{margin:8px 0 6px}h2{color:var(--navy);margin:28px 0 10px}code{background:#edf2f5;padding:2px 5px;border-radius:5px}.codeblock{background:#0f2133;border:1px solid #28455f;border-radius:12px;padding:16px;overflow:auto;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.tok-comment{color:#8fd7a8}.tok-key{color:#8bc5ff;font-weight:700}.tok-name{color:#ffd479}.tok-string{color:#ffb6c8}.tok-type{color:#d8b4fe}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--navy);background:#f7fafb}.muted{color:var(--muted)}.steps{display:grid;gap:8px}.step{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}.n{width:26px;height:26px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-weight:800}
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
 <a href="./">← Abitti2Dashboard</a>
 <h1>Koulukohtaiset muutokset</h1>
-<p>Kaikki tavalliset koulukohtaiset oletukset on koottu yhteen kohtaan lähdekoodissa. Tämä sivu kertoo, mitä kukin asetus muuttaa ja milloin muutos pitää tehdä.</p>
+<p>Muuta koulukohtaiset oletukset ennen EXE:n rakentamista.</p>
 </div></header>
 
 <main class="wrap">
-<div class="warn"><b>Tarkista ensin lataamasi lähdekoodi.</b> Älä aja internetistä ladattuja CMD- tai EXE-tiedostoja tarkistamatta niitä. Katso <a href="tarkista-lahdekoodi.html">lähdekoodin tarkistusohje</a>.<br><br><b>Tee nämä muutokset ennen EXE:n rakentamista.</b> Avaa <code>src/Program.Core.cs</code>, muuta arvot ja käynnistä vasta sen jälkeen <code>Rakenna_ja_kaynnista.cmd</code>. Jos muutat lähdekoodin oletuksia myöhemmin, rakenna EXE uudelleen.</div>
+<div class="warn"><b>Ennen ajamista:</b> tarkista lataamasi lähdekoodi. Katso <a href="tarkista-lahdekoodi.html">lähdekoodin tarkistusohje</a>.</div>
 
-<h2>Mistä asetukset löytyvät?</h2>
+<h2>Missä asetukset ovat?</h2>
 <div class="card">
-<p>Avaa <code>src/Program.Core.cs</code> ja etsi:</p>
-<pre>[KOULU][ASETUKSET]</pre>
-<p>Heti tämän otsikon alla ovat tavalliset koulukohtaiset asetukset. KTP-palvelinten oletussalasanat löytyvät hieman alempaa kohdasta:</p>
-<pre>[KOULU][OLETUSSALASANAT]</pre>
+<p>Avaa <code>src/Program.Core.cs</code> ja etsi <code>[KOULU][ASETUKSET]</code>. KTP-kohtaiset oletussalasanat löytyvät kohdasta <code>[KOULU][OLETUSSALASANAT]</code>.</p>
+<p>Muuta yleensä vain lainausmerkkien sisällä olevia arvoja. Tallenna tiedosto ja rakenna EXE uudelleen komennolla <code>Rakenna_ja_kaynnista.cmd</code>.</p>
 </div>
 
-<h2>Koko asetuskoodi</h2>
-<div class="card">
-<p>Tämä on se lähdekoodin osa, jota yleensä muokataan koulua varten. Värit auttavat erottamaan kommentit, asetusten nimet, tyypit ja varsinaiset arvot.</p>
-<div class="legend">
-<span><i class="sw comment"></i> kommentti / ohje</span>
-<span><i class="sw name"></i> asetuksen nimi</span>
-<span><i class="sw string"></i> muutettava arvo</span>
-<span><i class="sw type"></i> C#-tyyppi / rakenne</span>
-</div>
+<h2>Muokattava asetuslohko</h2>
 <div class="codeblock"><span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">Username</span> = <span class="tok-string">"valvoja"</span>;
 
-<span class="tok-comment">// ==========================================================================</span>
-<span class="tok-comment">// [KOULU][ASETUKSET] TAVALLISET LUKIOKOHTAISET MUUTOKSET TEHDÄÄN TÄSSÄ</span>
-<span class="tok-comment">// ==========================================================================</span>
-<span class="tok-comment">// KtpDomainSuffix     = KTP-palvelinten osoitteen loppuosa, esim. ktp1 + tämä arvo.</span>
-<span class="tok-comment">// StudentServerSuffix = opiskelijalle näytettävä osoitteen loppuosa.</span>
-<span class="tok-comment">// ReservationUrl      = linkki, josta opettajat varaavat KTP-palvelimia.</span>
-<span class="tok-comment">// PasswordFileUrl     = intranet-linkki ajantasaiseen valvoja-salasanataulukkoon.</span>
-<span class="tok-comment">// StudentWifi         = opiskelijoille näytettävä koeverkon nimi.</span>
-<span class="tok-comment">// StudentUsername     = opiskelijoille näytettävä Windows-käyttäjätunnus.</span>
-<span class="tok-comment">// StudentPassword     = opiskelijoille näytettävä Windows-salasana.</span>
-<span class="tok-comment">// DefaultDecryptPassword = Tuo koe -ikkunaan esitäytettävä purkukoodi.</span>
+<span class="tok-comment">// [KOULU][ASETUKSET]</span>
 <span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">KtpDomainSuffix</span> = <span class="tok-string">".1068.koe.abitti.net"</span>;
 <span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentServerSuffix</span> = <span class="tok-string">".1068"</span>;
 <span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">ReservationUrl</span> = <span class="tok-string">"https://example.invalid/palvelinvaraus"</span>;
 <span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">PasswordFileUrl</span> = <span class="tok-string">"https://example.invalid/valvojan-salasanat"</span>;
 <span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentWifi</span> = <span class="tok-string">"espoo_koeverkko1"</span>;
-<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentUsername</span> = <span class="tok-string">@".\\Abitti"</span>;
-<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentPassword</span> = <span class="tok-string">"Opiskelu_koe-26#"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentUsername</span> = <span class="tok-string">@".\Abitti"</span>;
+<span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">StudentPassword</span> = <span class="tok-string">"OpiskeluKoe-26#"</span>;
 <span class="tok-key">const</span> <span class="tok-type">string</span> <span class="tok-name">DefaultDecryptPassword</span> = <span class="tok-string">"VAIHDA_OLETUS_PURKUKOODI_TÄHÄN"</span>;
 
-<span class="tok-comment">// [KOULU][OLETUSSALASANAT] Uuden asennuksen lähtöarvot.</span>
-<span class="tok-comment">// Yhteydet-välilehdellä myöhemmin tallennetut salasanat ohittavat nämä arvot.</span>
-<span class="tok-comment">// KTP5-KTP10 voivat olla tyhjiä.</span>
+<span class="tok-comment">// [KOULU][OLETUSSALASANAT] KTP1 → KTP10</span>
 <span class="tok-key">static readonly</span> <span class="tok-type">string[]</span> <span class="tok-name">DefaultPasswords</span> = {
     <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>,
     <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>, <span class="tok-string">""</span>
 };</div>
-<p class="muted"><b>Muokkaa vain lainausmerkkien sisällä olevia arvoja</b>, ellei tiedä tarkasti mitä tekee. Esimerkiksi <code>KtpDomainSuffix</code>-rivillä vaihdetaan vain <code>".1068.koe.abitti.net"</code>.</p>
-</div>
 
-<h2>Rivikohtainen pikaopas</h2>
+<h2>Mitä asetukset tekevät?</h2>
 <table>
-<tr><th>Koodi</th><th>Mitä käyttäjä muuttaa</th><th>Mihin se vaikuttaa</th></tr>
-<tr><td><code>Username</code></td><td>Yleensä ei mitään</td><td>KTP:n Basic Auth -käyttäjätunnus. Oletus <code>valvoja</code>.</td></tr>
-<tr><td><code>KtpDomainSuffix</code></td><td>Koulunumero/domain</td><td>Kaikkien KTP-palvelinten oikeat verkko-osoitteet.</td></tr>
-<tr><td><code>StudentServerSuffix</code></td><td>Opiskelijalle annettava lyhyt loppuosa</td><td>Kirjautumisohjeessa näytettävä <code>ktpN.xxxx</code>.</td></tr>
-<tr><td><code>ReservationUrl</code></td><td>Koulun varauslinkki</td><td>Hallinta-sivun palvelinvarauspainike.</td></tr>
-<tr><td><code>PasswordFileUrl</code></td><td>Koulun oma tietolinkki</td><td>Hallinta-sivun linkki valvoja-salasanoihin.</td></tr>
-<tr><td><code>StudentWifi</code></td><td>Koeverkon nimi</td><td>Opiskelijan kirjautumisohje.</td></tr>
-<tr><td><code>StudentUsername</code></td><td>Opiskelijakoneen tunnus</td><td>Opiskelijan kirjautumisohje.</td></tr>
-<tr><td><code>StudentPassword</code></td><td>Opiskelijakoneen salasana</td><td>Opiskelijan kirjautumisohje.</td></tr>
-<tr><td><code>DefaultDecryptPassword</code></td><td>Oletuspurkukoodi</td><td>Tuo koe -toiminnon purkukoodi-ikkunan esitäyttö.</td></tr>
-<tr><td><code>DefaultPasswords</code></td><td>KTP1–KTP10 oletussalasanat järjestyksessä</td><td>Automaattinen kirjautuminen KTP-palvelimiin uuden asennuksen alussa.</td></tr>
+<tr><th>Asetus</th><th>Vaikutus</th></tr>
+<tr><td><code>KtpDomainSuffix</code></td><td>KTP1–KTP10:n oikeat verkko-osoitteet.</td></tr>
+<tr><td><code>StudentServerSuffix</code></td><td>Opiskelijan ohjeessa näkyvän palvelinosoitteen loppuosa.</td></tr>
+<tr><td><code>ReservationUrl</code></td><td>Palvelinvarauksen linkki.</td></tr>
+<tr><td><code>PasswordFileUrl</code></td><td>Valvoja-salasanojen linkki.</td></tr>
+<tr><td><code>StudentWifi</code></td><td>Opiskelijan ohjeessa näkyvä koeverkon nimi.</td></tr>
+<tr><td><code>StudentUsername</code></td><td>Opiskelijan Windows-käyttäjätunnus.</td></tr>
+<tr><td><code>StudentPassword</code></td><td>Opiskelijan Windows-salasana.</td></tr>
+<tr><td><code>DefaultDecryptPassword</code></td><td>Tuo koe -ikkunan oletuspurkukoodi.</td></tr>
+<tr><td><code>DefaultPasswords</code></td><td>KTP1–KTP10:n valvoja-salasanojen oletukset järjestyksessä.</td></tr>
 </table>
 
-
-<h2>Koko muokattava asetusosio</h2>
+<h2>Mikä vaatii uuden buildin?</h2>
 <div class="card">
-<p>Tämä on koko koulukohtainen asetuslohko sellaisena kuin se on tällä hetkellä tiedostossa <code>src/Program.Core.cs</code>. Käytännössä tavalliset koulukohtaiset muutokset tehdään tähän kohtaan ennen EXE:n rakentamista.</p>
-
-<div class="codebox"><span class="kw">const</span> <span class="type">string</span> <span class="name">Username</span> = <span class="str">"valvoja"</span>;
-
-<span class="com">// ==========================================================================</span>
-<span class="com">// [KOULU][ASETUKSET] TAVALLISET LUKIOKOHTAISET MUUTOKSET TEHDÄÄN TÄSSÄ</span>
-<span class="com">// ==========================================================================</span>
-<span class="com">// KtpDomainSuffix     = KTP-palvelinten osoitteen loppuosa, esim. ktp1 + tämä arvo.</span>
-<span class="com">// StudentServerSuffix = opiskelijalle näytettävä lyhyt palvelinmuoto.</span>
-<span class="com">// ReservationUrl      = linkki, josta opettajat varaavat KTP-palvelimia.</span>
-<span class="com">// PasswordFileUrl     = intranet-linkki ajantasaiseen valvoja-salasanataulukkoon.</span>
-<span class="com">// StudentWifi         = opiskelijoille näytettävä koeverkon nimi.</span>
-<span class="com">// StudentUsername     = opiskelijoille näytettävä Windows-käyttäjätunnus.</span>
-<span class="com">// StudentPassword     = opiskelijoille näytettävä Windows-salasana.</span>
-<span class="com">// DefaultDecryptPassword = Tuo koe -ikkunaan esitäytettävä purkukoodi.</span>
-
-<span class="kw">const</span> <span class="type">string</span> <span class="name">KtpDomainSuffix</span> = <span class="str">".1068.koe.abitti.net"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">StudentServerSuffix</span> = <span class="str">".1068"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">ReservationUrl</span> = <span class="str">"https://example.invalid/palvelinvaraus"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">PasswordFileUrl</span> = <span class="str">"https://example.invalid/valvojan-salasanat"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">StudentWifi</span> = <span class="str">"espoo_koeverkko1"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">StudentUsername</span> = <span class="str">@".\Abitti"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">StudentPassword</span> = <span class="str">"Opiskelu_koe-26#"</span>;
-<span class="kw">const</span> <span class="type">string</span> <span class="name">DefaultDecryptPassword</span> = <span class="str">"VAIHDA_OLETUS_PURKUKOODI_TÄHÄN"</span>;
-
-<span class="com">// [KOULU][OLETUSSALASANAT] Uuden asennuksen lähtöarvot.</span>
-<span class="com">// Yhteydet-välilehdellä myöhemmin tallennetut salasanat ohittavat nämä arvot</span>
-<span class="com">// kyseisen Windows-käyttäjän koneella. KTP5-KTP10 voivat olla tyhjiä.</span>
-<span class="kw">static readonly</span> <span class="type">string[]</span> <span class="name">DefaultPasswords</span> = <span class="arr">{</span>
-    <span class="str">""</span>, <span class="str">""</span>, <span class="str">""</span>, <span class="str">""</span>, <span class="str">""</span>,
-    <span class="str">""</span>, <span class="str">""</span>, <span class="str">""</span>, <span class="str">""</span>, <span class="str">""</span>
-<span class="arr">}</span>;
-<span class="com">// ==========================================================================</span></div>
-
-<div class="legend">
-<span class="lcom">vihreä = kommentti / ohje</span>
-<span class="lname">keltainen = asetuksen nimi</span>
-<span class="lstr">oranssi = arvo, jota yleensä muutetaan</span>
-<span>sininen/violetti = C#-syntaksia</span>
+<p><b>Lähdekoodiin tehty muutos:</b> kyllä, rakenna EXE uudelleen.</p>
+<p><b>Yhteydet-välilehdellä vaihdettu KTP-salasana:</b> ei, se tallennetaan käyttäjäkohtaisesti tälle koneelle.</p>
+<p><b>Asetukset-välilehdellä muutettu kirjautumisohje tai linkki:</b> ei paikallisesti, mutta jos haluat jakaa muutoksen muille koneille, tee sama muutos lähdekoodiin ja rakenna EXE uudelleen.</p>
 </div>
 
-<p><b>Mitä käytännössä muokataan?</b> Yleensä muutat vain oranssilla näkyviä arvoja lainausmerkkien sisällä. Asetusten nimet, <code>const string</code> -tekstit, sulkeet ja puolipisteet jätetään ennalleen.</p>
-<p><b>Poikkeus:</b> <code>DefaultPasswords</code>-taulukossa jokainen lainausmerkkien välinen arvo vastaa yhtä KTP-palvelinta järjestyksessä KTP1 → KTP10.</p>
-</div>
-
-
-<h2>Koko asetusosio yhdellä silmäyksellä</h2>
-<div class="card">
-<p>Tämä on se lohko, jota muokataan ennen EXE:n rakentamista. Värit vastaavat alla olevia selitteitä.</p>
-<pre style="background:#0f1f2f;color:#eaf1f6;padding:16px;border-radius:12px;overflow:auto;line-height:1.55"><code>
-<span style="color:#8fa6b8">// [KOULU][ASETUKSET]</span>
-<span style="color:#8dc8ff">const string KtpDomainSuffix = ".KOULUN_NUMERO.koe.abitti.net";</span>
-<span style="color:#8dc8ff">const string StudentServerSuffix = ".KOULUN_NUMERO";</span>
-<span style="color:#8fe0b2">const string ReservationUrl = "VAIHDA_PALVELINVARAUKSEN_LINKKI";</span>
-<span style="color:#8fe0b2">const string PasswordFileUrl = "VAIHDA_SALASANALISTAN_LINKKI";</span>
-<span style="color:#c9a7ff">const string StudentWifi = "VAIHDA_KOEVERKON_NIMI";</span>
-<span style="color:#c9a7ff">const string StudentUsername = @"VAIHDA_OPISKELIJAN_TUNNUS";</span>
-<span style="color:#c9a7ff">const string StudentPassword = "VAIHDA_OPISKELIJAN_SALASANA";</span>
-<span style="color:#ffbd8a">const string DefaultDecryptPassword = "VAIHDA_PURKUKOODIN_OLETUS";</span>
-
-<span style="color:#8fa6b8">// [KOULU][OLETUSSALASANAT]</span>
-<span style="color:#ffe58a">static readonly string[] DefaultPasswords = {
-    "KTP1", "KTP2", "KTP3", "KTP4", "", "", "", "", "", ""
-};</span>
-</code></pre>
-</div>
-<div class="card">
-<p><b style="color:#5da2e3">Sininen:</b> KTP-palvelinten osoitteet.</p>
-<p><b style="color:#5ab883">Vihreä:</b> koulun omat pikalinkit.</p>
-<p><b style="color:#9a77d6">Violetti:</b> opiskelijan kirjautumisohjeessa näkyvät tiedot.</p>
-<p><b style="color:#e18a4b">Oranssi:</b> kokeen purkukoodin oletusarvo.</p>
-<p><b style="color:#b18f00">Keltainen:</b> KTP1–KTP10:n valvoja-salasanojen oletusarvot.</p>
-</div>
-
-<h2>Mitä kukin asetus tekee?</h2>
-
-<div class="setting">
-<h3><code>KtpDomainSuffix</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> kaikkien KTP1–KTP10-palvelinten varsinaiset verkko-osoitteet, joihin ohjelma yrittää yhdistää.</div>
-<div class="example">Jos arvo on <code>.1068.koe.abitti.net</code>, KTP3:n osoitteeksi muodostuu <code>ktp3.1068.koe.abitti.net</code>.</div>
-<p><b>Milloin muuta:</b> jos koulun KTP-palvelimissa käytettävä koulunumero/domain on eri.</p>
-<p><b>Jos arvo on väärä:</b> palvelimet eivät löydy, vaikka salasanat olisivat oikein.</p>
-</div>
-
-<div class="setting">
-<h3><code>StudentServerSuffix</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan kirjautumisohjeessa näytettävän lyhyen palvelinosoitteen.</div>
-<div class="example">Arvolla <code>.1068</code> opiskelijalle näytetään esimerkiksi <code>ktp1.1068</code> tai <code>ktp4.1068</code>. Ohjelma lisää <code>ktpN</code>-osan itse valitun palvelimen mukaan.</div>
-<p><b>Milloin muuta:</b> jos opiskelijoille annettava palvelinnimi käyttää eri koulunumeroa.</p>
-<p><b>Huomio:</b> tähän ei kirjoiteta <code>ktp1.1068</code>, koska silloin KTP2–KTP10 muodostuisivat väärin.</p>
-</div>
-
-<div class="setting">
-<h3><code>ReservationUrl</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> Hallinta-sivun pikalinkin, josta opettaja varaa KTP-palvelimia.</div>
-<div class="example">Esimerkiksi Wilman palvelinvaraus- tai aikataulusivu.</div>
-<p><b>Milloin muuta:</b> jos toisessa koulussa palvelimet varataan eri osoitteesta.</p>
-<p><b>Jos linkkiä ei tarvita:</b> sen voi vaihtaa koulun muuhun ohjesivuun tai jättää tarkoituksella neutraaliksi.</p>
-</div>
-
-<div class="setting">
-<h3><code>PasswordFileUrl</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> pikalinkin, josta valvoja löytää koulun ajantasaiset KTP-valvoja-salasanat.</div>
-<div class="example">Tyypillisesti koulun intranetissä tai SharePointissa oleva salasanataulukko.</div>
-<p><b>Milloin muuta:</b> aina, jos ohjelma otetaan käyttöön toisessa koulussa ja sillä on oma salasanojen jakopaikka.</p>
-<p><b>Huomio:</b> linkki näkyy käyttöliittymässä, joten käytä vain sellaista osoitetta, jonka näkyminen valvontakoneella on tarkoituksenmukaista.</p>
-</div>
-
-<div class="setting">
-<h3><code>StudentWifi</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan kirjautumisohjeessa isolla näytettävän koeverkon nimen.</div>
-<div class="example">Nykyinen oletus on <code>espoo_koeverkko1</code>.</div>
-<p><b>Milloin muuta:</b> jos koulun koeverkon SSID on eri.</p>
-<p><b>Jos arvo on väärä:</b> opiskelija voi yrittää liittyä väärään langattomaan verkkoon.</p>
-</div>
-
-<div class="setting">
-<h3><code>StudentUsername</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan Windows-kirjautumisohjeessa näytettävän käyttäjätunnuksen.</div>
-<div class="example">Nykyinen oletus on <code>.\Abitti</code>.</div>
-<p><b>Milloin muuta:</b> vain jos koulun opiskelijakoneissa käytetään eri paikallista tunnusta.</p>
-</div>
-
-<div class="setting">
-<h3><code>StudentPassword</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> opiskelijan kirjautumisohjeessa näytettävän Windows-salasanan.</div>
-<p><b>Milloin muuta:</b> jos opiskelijakoneiden yhteinen kirjautumissalasana vaihtuu tai toisessa koulussa käytetään eri salasanaa.</p>
-<p><b>Huomio:</b> tämä arvo päätyy rakennettuun EXE:en ja näkyy opiskelijan ohjesivulla. Sitä ei pidä käyttää mihinkään muuhun järjestelmään liittyvänä salaisuutena.</p>
-</div>
-
-<div class="setting">
-<h3><code>DefaultDecryptPassword</code></h3>
-<div class="effect"><b>Mitä se muuttaa:</b> <b>Tuo koe</b> -toiminnon purkukoodi-ikkunaan valmiiksi kirjoitettavan oletusarvon.</div>
-<div class="example">Kun KTP on vastaanottanut koetiedoston, dashboard avaa purkukoodi-ikkunan. Tämä arvo näkyy siinä valmiina, mutta käyttäjä voi muuttaa sitä ennen <b>Pura koe</b> -painiketta.</div>
-<p><b>Milloin muuta:</b> jos koululla on vakiintunut oletuspurkukoodi, jonka haluat vähentävän käsin kirjoittamista.</p>
-<p><b>Jos arvo on väärä:</b> se ei itsessään käynnistä mitään. Käyttäjä voi korjata purkukoodin ennen lähettämistä tai yrittää uudelleen.</p>
-</div>
-
-<h2>KTP1–KTP10:n oletussalasanat</h2>
-<div class="card">
-<p>Etsi <code>[KOULU][OLETUSSALASANAT]</code>. Taulukon järjestys on suoraan palvelinnumeron mukainen:</p>
-<table>
-<tr><th>Taulukon kohta</th><th>Palvelin</th><th>Käyttö</th></tr>
-<tr><td>1.</td><td>KTP1</td><td>KTP1:n valvoja-salasana</td></tr>
-<tr><td>2.</td><td>KTP2</td><td>KTP2:n valvoja-salasana</td></tr>
-<tr><td>3.</td><td>KTP3</td><td>KTP3:n valvoja-salasana</td></tr>
-<tr><td>4.</td><td>KTP4</td><td>KTP4:n valvoja-salasana</td></tr>
-<tr><td>5.–10.</td><td>KTP5–KTP10</td><td>Voivat olla tyhjiä, jos palvelimia ei käytetä oletuksena.</td></tr>
-</table>
-<p>Oletussalasana on uuden asennuksen lähtöarvo. Jos salasana päivitetään myöhemmin ohjelman <b>Yhteydet</b>-välilehdellä, koneelle tallennettu arvo ohittaa EXE:n sisäisen oletuksen.</p>
-<div class="ok"><b>Käytännössä:</b> lähdekoodin oletukset ovat hyödyllisiä silloin, kun sama EXE halutaan jakaa koulun koneille valmiiksi oikeilla lähtöasetuksilla. Päivittäisessä käytössä vaihtuvan yksittäisen KTP-salasanan voi vaihtaa suoraan Yhteydet-sivulta ilman uutta käännöstä.</div>
-</div>
-
-<h2>Mikä vaatii EXE:n rakentamisen uudelleen?</h2>
-<table>
-<tr><th>Muutos</th><th>Tarvitseeko rakentaa EXE uudelleen?</th></tr>
-<tr><td>KTP-domain</td><td><b>Kyllä</b></td></tr>
-<tr><td>Opiskelijan palvelinosoitteen muoto</td><td><b>Kyllä</b></td></tr>
-<tr><td>Palvelinvaraus- tai salasanalinkki</td><td><b>Kyllä</b></td></tr>
-<tr><td>WiFi / opiskelijan tunnus / opiskelijan salasana</td><td><b>Kyllä</b></td></tr>
-<tr><td>Purkukoodin oletusarvo</td><td><b>Kyllä</b></td></tr>
-<tr><td>Lähdekoodiin tallennettu KTP-oletussalasana</td><td><b>Kyllä</b></td></tr>
-<tr><td>Yhteydet-välilehdellä vaihdettu KTP-salasana</td><td><b>Ei</b> – tallennetaan käyttäjäkohtaisesti tällä koneella</td></tr>
-</table>
-
-<h2>Suositeltu etenemisjärjestys toisessa koulussa</h2>
+<h2>Nopea etenemisjärjestys</h2>
 <div class="card steps">
-<div class="step"><div class="n">1</div><div>Tarkista koulun KTP-osoiterakenne ja muuta <code>KtpDomainSuffix</code> sekä <code>StudentServerSuffix</code>.</div></div>
-<div class="step"><div class="n">2</div><div>Vaihda opiskelijan kirjautumisohjeen WiFi, käyttäjätunnus ja salasana tarvittaessa.</div></div>
-<div class="step"><div class="n">3</div><div>Vaihda koulun omat pikalinkit.</div></div>
-<div class="step"><div class="n">4</div><div>Lisää halutut KTP-oletussalasanat.</div></div>
-<div class="step"><div class="n">5</div><div>Valitse haluttu kokeen purkukoodin oletusarvo.</div></div>
-<div class="step"><div class="n">6</div><div>Tallenna tiedosto ja käynnistä <code>Rakenna_ja_kaynnista.cmd</code>.</div></div>
-<div class="step"><div class="n">7</div><div>Tarkista <b>Yhteydet</b>-välilehdeltä sekä <b>Yhteys</b> että <b>Kirjautuminen</b> jokaiselle käytettävälle KTP:lle.</div></div>
-<div class="step"><div class="n">8</div><div>Avaa yhden palvelimen opiskelijan kirjautumisohje ja varmista, että verkko-, tunnus- ja palvelintiedot näkyvät oikein.</div></div>
+<div class="step"><div class="n">1</div><div>Muuta KTP-domain ja opiskelijalle näytettävä palvelinosoite.</div></div>
+<div class="step"><div class="n">2</div><div>Muuta WiFi, opiskelijan tunnus/salasana ja koulun linkit.</div></div>
+<div class="step"><div class="n">3</div><div>Lisää halutut KTP-oletussalasanat.</div></div>
+<div class="step"><div class="n">4</div><div>Tallenna ja aja <code>Rakenna_ja_kaynnista.cmd</code>.</div></div>
+<div class="step"><div class="n">5</div><div>Tarkista ohjelmasta Yhteydet ja opiskelijan kirjautumisohje.</div></div>
 </div>
 
-<p><a href="./">← Takaisin projektisivulle</a></p>
+<p class="muted"><a href="./">← Takaisin projektisivulle</a></p>
 </main>
 </body>
 </html>
