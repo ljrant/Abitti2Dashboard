@@ -4,7 +4,7 @@ Windows-työkalu usean Abitti2:n KTP-palvelimen hallintaan samasta näkymästä.
 
 Ohjelma näyttää palvelinten yhteyden ja kirjautumisen tilan, kokeet, vastausten määrän ja muut keskeiset tilat. Hallinnasta voi avata valvojan näkymät, tuoda ja käynnistää kokeita, lähettää koesuorituksia sekä avata opiskelijalle selkeän kirjautumisohjeen.
 
-> **Huom.** Tämä on epävirallinen työkalu. Testaa se omassa ympäristössä ennen käyttöä varsinaisessa koetilanteessa.
+> **Huom.** Tämä on epävirallinen työkalu. Abitti2Dashboard ei tarjoa käyttöjärjestelmä-, shell- tai tiedostojärjestelmäpääsyä KTP-palvelimeen, vaan toimii yhdistettynä käyttöliittymänä usean Abitti2-valvojanäkymän hallintaan samanaikaisesti. Sen ei pitäisi mahdollistaa olennaisesti laajempia muutoksia kuin tavallinen Abitti2-valvojanäkymä.
 
 ## Tarkista lähdekoodi ennen ajamista
 
@@ -119,7 +119,7 @@ Ohjelma vain näyttää KTP:n ilmoittaman palvelinryhmän. Ryhmät muodostetaan 
 
 Generaattori tekee muodollisesti oikeanlaisen testihenkilötunnuksen koetilanteen testaamista varten esimerkiksi silloin, kun opiskelija ei muista omaa HETUaan.
 
-Toimintoa ei ole vielä kattavasti testattu varsinaisessa koetilanteessa, eikä generaattori tarkista, osuuko luotu tunnus oikean henkilön tunnukseen.
+Generaattori ei tarkista, osuuko luotu tunnus oikean henkilön tunnukseen.
 
 ## Repositoryn rakenne
 
