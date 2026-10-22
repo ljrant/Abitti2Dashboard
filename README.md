@@ -6,6 +6,27 @@ Ohjelma näyttää palvelinten yhteyden ja kirjautumisen tilan, kokeet, vastaust
 
 > **Huom.** Tämä on epävirallinen työkalu. Testaa se omassa ympäristössä ennen käyttöä varsinaisessa koetilanteessa.
 
+## Tarkista lähdekoodi ennen ajamista
+
+Älä luota automaattisesti internetistä ladattuun ZIP-, CMD- tai EXE-tiedostoon. Pura paketti ja tarkista lähdekoodi ennen kuin ajat `Rakenna_ja_kaynnista.cmd`-tiedoston tai muuta ohjelmaa.
+
+Avaa ainakin nämä tiedostot tavallisella tekstieditorilla:
+
+- `Rakenna_ja_kaynnista.cmd`
+- `src/Program.Core.cs`
+- `src/Program.Http.cs`
+- `src/Program.WebSocket.cs`
+- `src/Program.Storage.cs`
+- `ui.html`
+
+Windowsin Muistio riittää; myös Visual Studio Code tai Notepad++ sopii. Etsi erityisesti verkkoyhteyksiä, käynnistettäviä prosesseja/komentoja, tiedostojen kirjoitusta tai poistoa sekä salasanojen ja muiden arkaluonteisten tietojen käsittelyä.
+
+Yksinkertainen tarkistusohje ja valmis tekoälyprompti:
+
+**https://ljrant.github.io/Abitti2Dashboard/tarkista-lahdekoodi.html**
+
+Turvallisin tapa on rakentaa EXE itse tarkistamastasi lähdekoodista.
+
 ## Ensikäyttö
 
 1. Lataa projektisivulta **ohjelmapaketti** ja pura se paikalliseen kansioon.
