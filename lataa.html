@@ -12,6 +12,8 @@
 <body>
 <header class="hero"><div class="wrap"><a href="./">← Abitti2Dashboard</a><h1>Lataa ohjelmapaketti</h1><p>Yksi ZIP sisältää kaikki Abitti2Dashboardin rakentamiseen ja käyttöön tarvittavat tiedostot.</p></div></header>
 <main class="wrap">
+<div class="card" style="background:#fff7e8;border-color:#ebcf91"><h2>Tarkista lähdekoodi ennen ajamista</h2><p><b>Älä luota automaattisesti internetistä ladattuun ZIP-, CMD- tai EXE-tiedostoon.</b> Pura paketti ensin ja tarkista, mitä lähdekoodi tekee ennen kuin ajat mitään.</p><p>Avaa ainakin <code>Rakenna_ja_kaynnista.cmd</code>, <code>src/Program.Core.cs</code>, <code>src/Program.Http.cs</code>, <code>src/Program.WebSocket.cs</code>, <code>src/Program.Storage.cs</code> ja <code>ui.html</code> tekstieditorissa.</p><p><a href="tarkista-lahdekoodi.html"><b>Näytä yksinkertainen tarkistusohje ja valmis tekoälyprompti →</b></a></p></div>
+
 <div class="card">
 <h2>Abitti2Dashboard-ohjelmapaketti</h2>
 <p>Paketti sisältää vain sovelluksen tarvitsemat lähde- ja rakennustiedostot. GitHub Pages -sivuja tai muita projektin ylläpitotiedostoja ei tule mukaan.</p>
@@ -29,7 +31,7 @@
     Program.Http.cs
     Program.WebSocket.cs
     Program.Storage.cs</pre>
-<p>Pura ZIP. Tee tarvittaessa <a href="customointi.html">koulukohtaiset muutokset</a> tiedostoon <code>src/Program.Core.cs</code> ja käynnistä sitten <code>Rakenna_ja_kaynnista.cmd</code>.</p>
+<p>Pura ZIP. <b>Tarkista lähdekoodi ennen ajamista.</b> Tee sen jälkeen tarvittaessa <a href="customointi.html">koulukohtaiset muutokset</a> tiedostoon <code>src/Program.Core.cs</code> ja käynnistä vasta sitten <code>Rakenna_ja_kaynnista.cmd</code>.</p>
 </div>
 
 <p class="muted">ZIP muodostuu GitHubin <code>package</code>-haarasta, joka sisältää vain ohjelmapakettiin kuuluvat tiedostot.</p>
