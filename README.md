@@ -117,3 +117,12 @@ docs/index.html            projektin GitHub Pages -etusivu
 Projektin lyhyet asennus- ja käyttöohjeet julkaistaan GitHub Pagesissa:
 
 **https://ljrant.github.io/Abitti2Dashboard/**
+
+
+## Lisenssi
+
+Abitti2Dashboard on julkaistu lisenssillä **GNU General Public License v3.0 or later (GPL-3.0-or-later)**.
+
+Ohjelmaa saa käyttää, tutkia, muokata ja jakaa GPL:n ehtojen mukaisesti. Jos jaat muokatun version, pidä siihen sovellettava lähdekoodi saatavilla GPL-ehtojen mukaisesti.
+
+Katso repositoryn `LICENSE`-tiedosto.
